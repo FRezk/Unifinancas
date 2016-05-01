@@ -1,0 +1,13 @@
+.modal .modal-dialog .modal-header .modal-title{
+	width: 80%;
+	border: none;
+	outline: none;
+	font-size: 1.2em;
+	padding: 10px;
+	color: #59ABE3;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif
+
+}
+.modal .modal-dialog .modal-header .modal-title:hover{
+	color: #19B5FE;
+}
