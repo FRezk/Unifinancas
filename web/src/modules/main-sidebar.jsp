@@ -13,6 +13,11 @@
           <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
         </a>
       </li>
+      <li>
+          <a href="pages/widgets.html">
+          <i class="fa fa-money"></i> <span>Fatura</span>
+          </a>
+      </li>
       
     </ul>
   </section>
