@@ -20,14 +20,14 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="/Unifinancas/template/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-            <span class="hidden-xs">Diego Rocumback</span>
+            <span class="hidden-xs"><%=session.getAttribute("nomeUsuario")%></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
               <img src="/Unifinancas/template/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
               <p>
-                Diego Rocumaback - CEO
+                <%=session.getAttribute("nomeUsuario")%>
                 <small>Membro desde. 2015</small>
               </p>
             </li>
@@ -49,7 +49,7 @@
                 <a href="#" class="btn btn-default btn-flat">Perfil</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sair</a>
+                <a href="src/code/logout.jsp" class="btn btn-default btn-flat">Sair</a>
               </div>
             </li>
           </ul>

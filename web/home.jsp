@@ -1,4 +1,8 @@
-<!--  -->
+<%-- 
+    Document   : home
+    Created on : May 15, 2016, 8:31:52 PM
+    Author     : Fernando
+--%>
 <%@ page pageEncoding="UTF-8"%>
 <%@include file="src/code/checkSession.jsp" %>
 <!DOCTYPE html>
@@ -6,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Unifinanças</title>
+    <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -53,7 +57,7 @@
 
       <!-- Conteúdo da Página -->
       <div class="content-wrapper">
-        <%@include file="src/modules/fatura.jsp" %>
+        <%@include file="src/modules/home.jsp" %>
         
       </div><!-- /.content-wrapper -->
       

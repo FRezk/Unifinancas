@@ -9,12 +9,17 @@
     <ul class="sidebar-menu">
       
       <li>
-        <a href="pages/widgets.html">
+          <a href="home.jsp">
+          <i class="fa fa-home"></i> <span>Home</span>
+          </a>
+      </li>
+      <li>
+        <a href="lista-compras.jsp">
           <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
         </a>
       </li>
       <li>
-          <a href="pages/widgets.html">
+          <a href="fatura.jsp">
           <i class="fa fa-money"></i> <span>Fatura</span>
           </a>
       </li>

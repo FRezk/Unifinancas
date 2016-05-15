@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@include file="src/code/checkSession.jsp" %>
 <!DOCTYPE html>
 <html>
   <head>
