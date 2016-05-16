@@ -1,4 +1,8 @@
-<!--  -->
+<%-- 
+    Document   : index
+    Created on : May 15, 2016, 8:47:43 PM
+    Author     : Fernando Rezk
+--%>
 <%@ page pageEncoding="UTF-8"%>
 <%@include file="src/code/checkSession.jsp" %>
 <!DOCTYPE html>

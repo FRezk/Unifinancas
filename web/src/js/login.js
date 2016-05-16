@@ -1,10 +1,10 @@
 $(function(){
     $('#loginForm').on('submit', function(e){
         $.ajax({
-            type: "post",
+            type: "get",
             url: "src/code/login.jsp",
             data: {
-                nomeUsuario: this.nomeUsuario.value,
+                emailUsuario: this.emailUsuario.value,
                 senhaUsuario: this.senhaUsuario.value
             },
             success: function(retorno){

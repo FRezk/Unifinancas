@@ -13,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Fernando
+ * @author Fernando Rezk
  */
 public class UsuarioDAO {
     EntityManager em;

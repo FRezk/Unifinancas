@@ -5,21 +5,21 @@
 <%@page import="modelo.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-  String nomeUsuario = (String) request.getParameter("nomeUsuario");
+  String emailUsuario = (String) request.getParameter("emailUsuario");
   String senhaUsuario = (String) request.getParameter("senhaUsuario");
   
   UsuarioDAO dao = new UsuarioDAO();
   List<Usuario> lista;
-  Usuario usuario = new Usuario();
   JSONObject json = new JSONObject();
        json.put("idStatus", 0);
        json.put("dsStatus", "Usuário ou senha Inválido");
   lista = dao.listar();
   for(Usuario user : lista){
-      if(user.getNome().equalsIgnoreCase(nomeUsuario) && user.getSenha().equalsIgnoreCase(senhaUsuario)){
+      if(user.getEmail().equalsIgnoreCase(emailUsuario) && user.getSenha().equalsIgnoreCase(senhaUsuario)){
        json.put("idStatus", 1);
        json.put("dsStatus", "Sucesso");
-       session.setAttribute( "nomeUsuario", nomeUsuario );
+       session.setAttribute( "nomeUsuario", user.getNome() );
+       session.setAttribute("emailUsuario", user.getEmail() );
        break;
        }
   }

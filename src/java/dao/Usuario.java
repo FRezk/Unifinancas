@@ -6,6 +6,7 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,6 +29,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
 public class Usuario implements Serializable {
 
+    @Column(name = "dtcadastro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dtcadastro;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +43,11 @@ public class Usuario implements Serializable {
     private String nome;
     @Column(name = "senha")
     private String senha;
+    @Basic(optional = false)
+    @Column(name = "email")
+    private String email;
+    @Column(name = "foto")
+    private String foto;
 
     public Usuario() {
     }
@@ -97,6 +108,30 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "dao.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Date getDtcadastro() {
+        return dtcadastro;
+    }
+
+    public void setDtcadastro(Date dtcadastro) {
+        this.dtcadastro = dtcadastro;
     }
     
 }
