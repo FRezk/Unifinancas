@@ -5,4 +5,4 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<p>OI, EU SOU O GOKU DA FATURA.</p>
+<p>FATURA AQUI.</p>

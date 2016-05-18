@@ -3,6 +3,7 @@
   <persistence-unit name="UnifinancasPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>dao.Usuario</class>
+    <class>dao.PlanoContas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Unifinancas"/>

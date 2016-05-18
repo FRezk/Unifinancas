@@ -14,14 +14,39 @@
           </a>
       </li>
       <li>
-        <a href="lista-compras.jsp">
-          <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
-        </a>
+          <a href="transacoes.jsp"> <!-- Falta criar o front end e back end  -->
+          <i class="fa fa-exchange"></i> <span>Lançamento de Transações</span>
+          </a>
       </li>
       <li>
           <a href="fatura.jsp">
           <i class="fa fa-money"></i> <span>Fatura</span>
           </a>
+      </li>
+      <li>
+          <a href="cartoes.jsp"> <!-- Falta criar o front end e back end  -->
+          <i class="fa fa-credit-card"></i> <span>Gerenciar Cartões</span>
+          </a>
+      </li>
+      <li>
+          <a href="contas.jsp"> <!-- Falta criar o front end e back end  -->
+          <i class="fa fa-bank"></i> <span>Gerenciar Contas</span>
+          </a>
+      </li>
+      <li>
+          <a href="estabelecimentos.jsp"> <!-- Falta criar o front end e back end  -->
+          <i class="fa fa-archive"></i> <span>Gerenciar Estabelecimentos</span>
+          </a>
+      </li>
+      <li>
+          <a href="planos.jsp"> <!-- Falta criar o front end e back end  -->
+          <i class="fa fa-columns"></i> <span>Gerenciar Planos de Contas</span>
+          </a>
+      </li>
+      <li>
+        <a href="lista-compras.jsp">
+          <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
+        </a>
       </li>
       
     </ul>

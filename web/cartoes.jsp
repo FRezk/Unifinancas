@@ -57,7 +57,7 @@
 
       <!-- Conteúdo da Página -->
       <div class="content-wrapper">
-        <%@include file="src/modules/home.jsp" %>
+        <%@include file="src/modules/cartoes.jsp" %>
         
       </div><!-- /.content-wrapper -->
       

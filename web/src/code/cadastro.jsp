@@ -4,6 +4,9 @@
     Author     : Fernando
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="dao.Usuario"%>
@@ -62,10 +65,13 @@
        }
   }
 
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date = new Date();
     Usuario obj = new Usuario();
     obj.setEmail(emailUsuario);
     obj.setNome(nomeUsuario);
     obj.setSenha(senhaUsuario);
+    obj.setDtcadastro(dateFormat.format(date));
     dao.incluir(obj);
     
     json.put("idStatus", 1);
