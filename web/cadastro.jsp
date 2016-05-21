@@ -27,7 +27,7 @@ if(nsession.getAttribute("nomeUsuario")!=null){
 	<div class="login-container">
 		<img src="src/img/logo.png">
 
-		<form name="login" method="get" id="cadastroForm">
+		<form name="cadastro" method="get" id="cadastroForm">
 			<!-- Email -->
                         <div class="input-group">
 			  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>

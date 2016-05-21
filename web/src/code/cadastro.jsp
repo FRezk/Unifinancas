@@ -65,13 +65,12 @@
        }
   }
 
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date = new Date();
     Usuario obj = new Usuario();
     obj.setEmail(emailUsuario);
     obj.setNome(nomeUsuario);
     obj.setSenha(senhaUsuario);
-    obj.setDtcadastro(dateFormat.format(date));
+    obj.setDtcadastro(date);
     dao.incluir(obj);
     
     json.put("idStatus", 1);
