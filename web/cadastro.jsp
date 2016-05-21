@@ -14,6 +14,7 @@ if(nsession.getAttribute("nomeUsuario")!=null){
 <html>
 <head>
 	<title>Cadastro</title>
+        <link rel="shortcut icon" type="image/png" href="src/img/favicon.png"/>
 	<!-- STYLES -->
 	<link rel="stylesheet" type="text/css" href="src/lib/style/normalize.css"/>
 	<link rel="stylesheet" type="text/css" href="src/lib/font-awesome/css/font-awesome.min.css"/>

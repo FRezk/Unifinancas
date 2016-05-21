@@ -1,8 +1,9 @@
 <%-- 
-    Document   : home
-    Created on : May 15, 2016, 8:31:52 PM
-    Author     : Fernando Rezk
+    Document   : configuracoes
+    Created on : 21/05/2016, 15:49:57
+    Author     : Jefferson
 --%>
+
 <%@ page pageEncoding="UTF-8"%>
 <%@include file="src/code/checkSession.jsp" %>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cartões</title>
+    <title>Configurações</title>
     <link rel="shortcut icon" type="image/png" href="src/img/favicon.png"/>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -46,7 +47,6 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
-    <link rel="stylesheet" href="src/style/lista-produtos.css">
     <link rel="stylesheet" href="src/style/input-spinner.css">
 
   </head>
@@ -58,7 +58,7 @@
 
       <!-- Conteúdo da Página -->
       <div class="content-wrapper">
-        <%@include file="src/modules/cartoes.jsp" %>
+        <%@include file="src/modules/configuracoes.jsp" %>
         
       </div><!-- /.content-wrapper -->
       
@@ -70,9 +70,6 @@
     </div><!-- ./wrapper -->
 
     <%@include file="src/modules/main-scripts.jsp" %>
-
-
-    <script src="src/js/input-spinner.js"></script>
 
 
   </body>

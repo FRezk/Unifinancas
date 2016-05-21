@@ -24,29 +24,43 @@
           </a>
       </li>
       <li>
-          <a href="cartoes.jsp"> <!-- Falta criar o front end e back end  -->
-          <i class="fa fa-credit-card"></i> <span>Gerenciar Cartões</span>
+          <a href="lista-compras.jsp">
+              <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
           </a>
       </li>
-      <li>
-          <a href="contas.jsp"> <!-- Falta criar o front end e back end  -->
-          <i class="fa fa-bank"></i> <span>Gerenciar Contas</span>
+      <li class="treeview">
+          <a href="#">
+              <i class="fa fa-cogs"></i>
+              <span>Gerenciar</span>
+              <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+              <li>
+                  <a href="cartoes.jsp"> <!-- Falta criar o front end e back end  -->
+                      <i class="fa fa-credit-card"></i> <span>Cartões</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="contas.jsp"> <!-- Falta criar o front end e back end  -->
+                      <i class="fa fa-bank"></i> <span>Contas</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="estabelecimentos.jsp"> <!-- Falta criar o front end e back end  -->
+                      <i class="fa fa-archive"></i> <span>Estabelecimentos</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="planos.jsp"> <!-- Falta criar o front end e back end  -->
+                      <i class="fa fa-columns"></i> <span>Planos de Contas</span>
+                  </a>
+              </li>
+          </ul>
       </li>
       <li>
-          <a href="estabelecimentos.jsp"> <!-- Falta criar o front end e back end  -->
-          <i class="fa fa-archive"></i> <span>Gerenciar Estabelecimentos</span>
+          <a href="configuracoes.jsp">
+              <i class="fa fa-wrench"></i> <span>Configurações</span>
           </a>
-      </li>
-      <li>
-          <a href="planos.jsp"> <!-- Falta criar o front end e back end  -->
-          <i class="fa fa-columns"></i> <span>Gerenciar Planos de Contas</span>
-          </a>
-      </li>
-      <li>
-        <a href="lista-compras.jsp">
-          <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
-        </a>
       </li>
       
     </ul>

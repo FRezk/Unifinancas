@@ -3,7 +3,7 @@
   <!-- Logo -->
   <a href="home.jsp" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>U</b>Fin</span>
+    <span class="logo-mini"><img src="src/img/logo-50x50.png" width="50px" height="50px"/></span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><b>Unifinanças</b></span>
   </a>
