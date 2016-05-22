@@ -32,6 +32,11 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")})
 public class Usuario implements Serializable {
 
+    @OneToMany(mappedBy = "idUsuario")
+    private List<Cartao> cartaoList;
+    @OneToMany(mappedBy = "idUsuario")
+    private List<Transacao> transacaoList;
+
     @Basic(optional = false)
     @Column(name = "dtcadastro")
     @Temporal(TemporalType.DATE)
@@ -149,6 +154,22 @@ public class Usuario implements Serializable {
 
     public void setDtcadastro(Date dtcadastro) {
         this.dtcadastro = dtcadastro;
+    }
+
+    public List<Cartao> getCartaoList() {
+        return cartaoList;
+    }
+
+    public void setCartaoList(List<Cartao> cartaoList) {
+        this.cartaoList = cartaoList;
+    }
+
+    public List<Transacao> getTransacaoList() {
+        return transacaoList;
+    }
+
+    public void setTransacaoList(List<Transacao> transacaoList) {
+        this.transacaoList = transacaoList;
     }
     
 }

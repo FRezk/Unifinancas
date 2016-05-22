@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="src/lib/font-awesome/css/font-awesome.min.css"/>
     <!-- Ionicons -->
     <link rel="stylesheet" type="text/css" href="template/ionicons/css/ionicons.min.css"/>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="template/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="template/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -46,6 +48,8 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
+    <link rel="stylesheet" href="src/style/componentes.css">
+    <link rel="stylesheet" href="src/style/transacao.css">
     
     
     <%@include file="src/modules/main-scripts.jsp" %>
@@ -64,5 +68,16 @@
       <%@include file="src/modules/control-sidebar.jsp" %>
     </div><!-- ./wrapper -->
     
+    
+    <!-- Select2 -->
+    <script src="template/plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="template/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="template/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="template/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    
+    <!-- SCRIPT transacao -->
+    <script src="src/js/transacao.js"></script>
+  
   </body>
 </html>

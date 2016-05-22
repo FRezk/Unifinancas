@@ -18,6 +18,7 @@
       if(user.getEmail().equalsIgnoreCase(emailUsuario) && user.getSenha().equalsIgnoreCase(senhaUsuario)){
        json.put("idStatus", 1);
        json.put("dsStatus", "Sucesso");
+       session.setAttribute( "idUsuario", user.getIdUsuario() );
        session.setAttribute( "nomeUsuario", user.getNome() );
        session.setAttribute("emailUsuario", user.getEmail() );
        break;

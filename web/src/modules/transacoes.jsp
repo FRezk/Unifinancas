@@ -4,7 +4,194 @@
     Author     : Fernando
 --%>
 
+<%@page import="dao.Transacao"%>
+<%@page import="modelo.TransacaoDAO"%>
+<%@page import="dao.Bandeira"%>
+<%@page import="modelo.BandeiraDAO"%>
+<%@page import="dao.Cartao"%>
+<%@page import="modelo.CartaoDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.Categoria"%>
+<%@page import="modelo.CategoriaDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+
+<!-- Modal -->
+<div class="modal fade" id="ReceitaModal" tabindex="-1" role="dialog" aria-labelledby="ReceitaModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nova Receita</h4>
+      </div>
+        
+      <!-- form start -->
+      <form id="receitaForm" class="form-horizontal">
+      <div class="modal-body">
+        
+          
+              <div class="box-body">
+                  <div class="form-group">
+                      
+                      <div class="col-sm-12">
+                          <label for="descricao" class="control-label">Descrição</label>
+                          <input name="transacao" type="hidden" value="RECEITA">
+                          <textarea name="descricao" class="form-control" id="descricao" placeholder="..."></textarea>
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      
+                      <div class="col-sm-6">
+                          <label for="valor" class="control-label">Valor</label>
+                          <input name="valor" type="text" class="form-control" id="valor" placeholder="0.00">
+                      </div>
+                      <div class="col-sm-4">
+                          <label>Data</label>
+                          <div class="input-group">
+                              <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                              </div>
+                              <input name="dtcadastro" type="text" id="data" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                          </div><!-- /.input group -->
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+
+                      <div class="col-sm-10">
+                          <label for="categoria" class="control-label">Categoria</label>
+                          <select name="categoria" class="form-control select2" style="width: 100%;">
+                              <%
+                                  CategoriaDAO categoriaDAO = new CategoriaDAO();
+                                  List<Categoria> listaCategoria;
+                                  listaCategoria = categoriaDAO.listar();
+                                  for (Categoria categoria : listaCategoria) {
+                              %>
+                              <option data-cor="<%= categoria.getCor() %>" value="<%= categoria.getIdCategoria() %>"><%= categoria.getNome() %></option>
+                              <%
+                                  }  
+                              %>
+                          </select>
+                      </div>
+                  </div>
+              </div><!-- /.box-body -->
+              <!--<div class="box-footer">-->
+                  <!--<button type="submit" class="btn btn-info pull-right">Sign in</button>-->
+              <!--</div> /.box-footer -->
+          
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn bg-olive btn-primary">Cadastrar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="DespesaModal" tabindex="-1" role="dialog" aria-labelledby="DespesaModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nova Despesa</h4>
+            </div>
+            <!-- form start -->
+            <form id="despesaForm" class="form-horizontal">
+                <div class="modal-body">
+
+
+                    <div class="box-body">
+                        <div class="form-group">
+
+                            <div class="col-sm-12">
+                                <label for="descricao" class="control-label">Descrição</label>
+                                <input name="transacao" type="hidden" value="DESPESA">
+                                <textarea name="descricao" class="form-control" id="descricao" placeholder="..."></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-4">
+                                <label for="valor" class="control-label">Valor</label>
+                                <input name="valor" type="text" class="form-control" id="valor" placeholder="0.00">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Espécie</label>
+                                <select name="especie" id="especie" class="form-control" style="width: 100%;">
+                                    <option value="0">Dinheiro/Débito</option>
+                                    <option value="1">Crédito</option>
+                                </select>
+                            </div>
+                            <div id="cartao-input" class="col-sm-4" style="display:none">
+                                <label class="control-label">Cartão</label>
+                                <select class="form-control select2-cartao" style="width: 100%;">
+                                    <%
+                                        CartaoDAO cartaoDAO = new CartaoDAO();
+                                        List<Cartao> listaCartao;
+                                        listaCartao = cartaoDAO.listar();
+                                        for (Cartao cartao : listaCartao) {
+                                            
+                                    %>
+                                    <option data-url-logo="<%= cartao.getIdBandeira().getLogoUrl() %>"            value="<%= cartao.getIdCartao() %>"><%= cartao.getNome() %></option>
+                                    <%
+                                        }
+                                    %>
+<!--                                    <option data-url-logo="src/img/bandeiras/visa-logo.png"            value="0">Visa</option>
+                                    <option data-url-logo="src/img/bandeiras/mastercard-logo.png"      value="1">Mastercard</option>
+                                    <option data-url-logo="src/img/bandeiras/americanexpress-logo.png" value="2">American Express</option>
+                                    <option data-url-logo="src/img/bandeiras/elo-logo.png"             value="3">Elo</option>
+                                    <option data-url-logo="src/img/bandeiras/discovernetwork-logo.png" value="4">Discover Network</option>
+                                    <option data-url-logo="src/img/bandeiras/outros-logo.png"          value="5">Outras Bandeiras</option>-->
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Data</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input name="dtcadastro" type="text" id="data" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                </div><!-- /.input group -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-10">
+                                <label for="categoria" class="control-label">Categoria</label>
+                                <select name="categoria" class="form-control select2" style="width: 100%;">
+                                    <%
+                                        for (Categoria categoria : listaCategoria) {
+                                    %>
+                                    <option data-cor="<%= categoria.getCor()%>" value="<%= categoria.getIdCategoria()%>"><%= categoria.getNome()%></option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <!--<div class="box-footer">-->
+                    <!--<button type="submit" class="btn btn-info pull-right">Sign in</button>-->
+                    <!--</div> /.box-footer -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn bg-olive btn-primary">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -20,5 +207,106 @@
 
 <!-- Main content -->
 <section class="content">
-    conteúdo aqui.
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn bg-green btn-app" data-toggle="modal" data-target="#ReceitaModal">
+                <i class="fa fa-plus-circle"></i> Nova Receita
+            </a>
+            <a class="btn bg-red btn-app" data-toggle="modal" data-target="#DespesaModal">
+                <i class="fa fa-minus-circle"></i> Nova Despesa
+            </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Maio 2016</h3>
+                    <div class="box-tools">
+                        <div class="input-group" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Pesquisar">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Dia/hora</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                            <th>Espécie</th>
+                        </tr>
+                        <%
+                            TransacaoDAO transacaoDAO = new TransacaoDAO();
+                            List<Transacao> listaTransacao;
+                            listaTransacao = transacaoDAO.listar();
+                            for (Transacao transacao : listaTransacao) {
+
+                        %>
+                        <tr>
+                            <td><%= transacao.getDttransacao() %></td>
+                            <td><span class="label label-danger">Despesa</span></td>
+                            <td><%= transacao.getDescricao() %></td>
+                            <td><%= transacao.getIdCategoria().getNome() %></td>
+                            <td align="right"><%= transacao.getValor() %></td>
+                            <td>Dinheiro/Débito</td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+    
 </section>
+
+<script>
+    $(function(){
+        function formatState (state) {
+            if (!state.id) { return state.text; }
+            var $state = $(
+              '<span><div style="background-color:' + state.element.getAttribute('data-cor') + '" class="categoria-tag"></div> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+        function formatStateCartao (state) {
+            if (!state.id) { return state.text; }
+            var $state = $(
+              '<span><img src="' + state.element.getAttribute('data-url-logo') + '" class="bandeira-logo"/> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+        //Initialize Select2 Elements
+        $(".select2").select2({
+            templateResult: formatState,
+            templateSelection: formatState
+        });
+        
+        $(".select2-cartao").select2({
+            templateResult: formatStateCartao,
+            templateSelection: formatStateCartao
+        });
+        
+        //Datemask dd/mm/yyyy
+        $("[data-mask]").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        $("#valor").inputmask();
+        
+        $('#especie').on('change', function(){
+           if(this.options[this.selectedIndex].value == "1"){
+               $('#cartao-input').css('display', 'block');
+               $('#cartao-input select').attr('name', 'cartao');
+           }else{
+               $('#cartao-input').css('display', 'none');
+               $('#cartao-input select').attr('name', '');
+           }
+        });
+    });
+</script>

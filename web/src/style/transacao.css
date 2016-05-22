@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/05/2016, 00:43:31
+    Author     : Jefferson
+*/
+
+.categoria-tag{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+.bandeira-logo{
+    width: 20px;
+    height: 15px;
+}
+

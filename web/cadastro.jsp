@@ -20,6 +20,7 @@ if(nsession.getAttribute("nomeUsuario")!=null){
 	<link rel="stylesheet" type="text/css" href="src/lib/font-awesome/css/font-awesome.min.css"/>
 	<link rel="stylesheet" type="text/css" href="src/lib/bootstrap/css/bootstrap-theme.min.css"/>
 	<link rel="stylesheet" type="text/css" href="src/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="src/style/componentes.css">
 	<link rel="stylesheet" type="text/css" href="src/style/login.css"/>
         <link href="template/plugins/iCheck/all.css" rel="stylesheet" type="text/css"/>
 		
