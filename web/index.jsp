@@ -27,6 +27,7 @@ if(nsession.getAttribute("nomeUsuario")!=null){
 
 </head>
 <body>
+    <div class="loading"><i class="fa fa-circle-o-notch fa-spin"></i></div>
 	<div class="login-container">
 		<img src="src/img/logo.png">
 
@@ -48,9 +49,6 @@ if(nsession.getAttribute("nomeUsuario")!=null){
 			<div class="clear"></div>
 		</form>
 	</div>
-
-
-
 
 
 

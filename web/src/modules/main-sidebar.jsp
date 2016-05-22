@@ -15,17 +15,12 @@
       </li>
       <li>
           <a href="transacoes.jsp"> <!-- Falta criar o front end e back end  -->
-          <i class="fa fa-exchange"></i> <span>Lançamento de Transações</span>
+          <i class="fa fa-exchange"></i> <span>Transações</span>
           </a>
       </li>
       <li>
           <a href="fatura.jsp">
           <i class="fa fa-money"></i> <span>Fatura</span>
-          </a>
-      </li>
-      <li>
-          <a href="lista-compras.jsp">
-              <i class="fa fa-shopping-cart"></i> <span>Lista de Compras</span>
           </a>
       </li>
       <li class="treeview">
@@ -51,8 +46,8 @@
                   </a>
               </li>
               <li>
-                  <a href="planos.jsp"> <!-- Falta criar o front end e back end  -->
-                      <i class="fa fa-columns"></i> <span>Planos de Contas</span>
+                  <a href="categorias.jsp"> <!-- Falta criar o front end e back end  -->
+                      <i class="fa fa-tags"></i> <span>Categorias</span>
                   </a>
               </li>
           </ul>

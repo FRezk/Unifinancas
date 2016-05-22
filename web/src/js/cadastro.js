@@ -22,8 +22,13 @@ $(function(){
                     senhaUsuario: this.senhaUsuario.value,
                     confirmaSenhaUsuario: this.confirmaSenhaUsuario.value
                 },
+                beforeSend: function(){
+                  $('.loading').fadeIn('fast');
+                },
                 success: function(retorno){
                     var r = JSON.parse(retorno);
+                    $('.loading').fadeOut('fast');
+                    
                     if(r.idStatus == 0){
                         alert(r.dsStatus);
                     } else if(r.idStatus == 1){

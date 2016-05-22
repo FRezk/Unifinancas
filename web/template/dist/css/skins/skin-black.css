@@ -3,6 +3,9 @@
  * -----------
  */
 /* skin-black navbar */
+body{
+    background-color: #222d32;
+}
 .skin-black .main-header {
   -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);

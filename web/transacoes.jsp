@@ -17,14 +17,14 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="template/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="src/lib/font-awesome/css/font-awesome.min.css"/>
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="template/ionicons/css/ionicons.min.css"/>
     <!-- Theme style -->
     <link rel="stylesheet" href="template/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="template/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="template/dist/css/skins/skin-black.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="template/plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
@@ -46,34 +46,23 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
-    <link rel="stylesheet" href="src/style/lista-produtos.css">
-    <link rel="stylesheet" href="src/style/input-spinner.css">
+    
+    
+    <%@include file="src/modules/main-scripts.jsp" %>
 
   </head>
   <body class="hold-transition skin-black sidebar-mini">
+    
     <div class="wrapper">
-
       <%@include file="src/modules/main-header.jsp" %>
       <%@include file="src/modules/main-sidebar.jsp" %>
-
       <!-- Conteúdo da Página -->
       <div class="content-wrapper">
-        <%@include file="src/modules/transacoes.jsp" %>
-        
+        <%@include file="src/modules/transacoes.jsp" %>   
       </div><!-- /.content-wrapper -->
-      
-      <%@include file="src/modules/control-sidebar.jsp" %>
       <%@include file="src/modules/main-footer.jsp" %>
-
-
-      
+      <%@include file="src/modules/control-sidebar.jsp" %>
     </div><!-- ./wrapper -->
-
-    <%@include file="src/modules/main-scripts.jsp" %>
-
-
-    <script src="src/js/input-spinner.js"></script>
-
-
+    
   </body>
 </html>

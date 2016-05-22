@@ -23,4 +23,19 @@ body {
     body div.login-container form input[type="submit"] {
       float: right; }
 
+    
+    .loading{
+        display: none;
+        position:fixed;
+        background-color: #34495e;
+        border-radius: 3px;
+        bottom: 40px;
+        left: 40px;
+    }
+    .loading i{
+        color: white;
+        padding: 20px;
+        font-size: 1.5em;
+    }
+    
 /*# sourceMappingURL=login.css.map */
