@@ -251,11 +251,19 @@
                         %>
                         <tr>
                             <td><%= transacao.getDttransacao() %></td>
-                            <td><span class="label label-danger">Despesa</span></td>
+                            <td><span class="label label-<%= transacao.getIdTipoTransacao().getNome()%>"><%= transacao.getIdTipoTransacao().getNome()%></span></td>
                             <td><%= transacao.getDescricao() %></td>
                             <td><%= transacao.getIdCategoria().getNome() %></td>
                             <td align="right"><%= transacao.getValor() %></td>
-                            <td>Dinheiro/Débito</td>
+                            <% 
+                                if(transacao.getTipoPagamento() == 1) {
+                            %> <td>Dinheiro/Débito <img src="<%=transacao.getIdCartao().getIdBandeira().getLogoUrl()%>" class="bandeira-logo" title="<%= transacao.getIdCartao().getNome()%>"/></td> <%
+                                } else{
+                                    %> <td>Dinheiro/Débito</td> <%
+                                }
+                            
+                            %>
+                            
                         </tr>
                         <%
                             }

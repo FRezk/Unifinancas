@@ -4,6 +4,7 @@
     Author     : Jefferson
 --%>
 
+<%@page import="dao.TipoTransacao"%>
 <%@page import="dao.Categoria"%>
 <%@page import="dao.Bandeira"%>
 <%@page import="dao.Cartao"%>
@@ -52,11 +53,13 @@
 
         Transacao transacaoObj = new Transacao();
         Categoria categoriaObj = new Categoria();
+        TipoTransacao tipoTransacaoObj = new TipoTransacao();
 
         categoriaObj.setIdCategoria(icategoria);
 
         if (stransacao.equalsIgnoreCase("RECEITA")) {
-            transacaoObj.setTipoTransacao(1);//receita
+            tipoTransacaoObj.setIdTipoTransacao(2);
+            transacaoObj.setIdTipoTransacao(tipoTransacaoObj);//receita
             transacaoObj.setDescricao(sdescricao);
             //alter table transacao alter column valor type double precision using cast(valor as double precision);
             transacaoObj.setValor(dvalor);
@@ -74,7 +77,8 @@
             String scartao = (String) request.getParameter("cartao");
             
 
-            transacaoObj.setTipoTransacao(0);//despesa
+            tipoTransacaoObj.setIdTipoTransacao(1);
+            transacaoObj.setIdTipoTransacao(tipoTransacaoObj);//despesa
             transacaoObj.setDescricao(sdescricao);
             //alter table transacao alter column valor type double precision using cast(valor as double precision);
             transacaoObj.setValor(dvalor);

@@ -32,6 +32,10 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Transacao.findAll", query = "SELECT t FROM Transacao t")})
 public class Transacao implements Serializable {
 
+    @JoinColumn(name = "id_tipo_transacao", referencedColumnName = "id_tipo_transacao")
+    @ManyToOne
+    private TipoTransacao idTipoTransacao;
+
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "valor")
     private Double valor;
@@ -42,9 +46,6 @@ public class Transacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_transacao")
     private Integer idTransacao;
-    @Basic(optional = false)
-    @Column(name = "tipo_transacao")
-    private int tipoTransacao;
     @Column(name = "descricao")
     private String descricao;
     @Basic(optional = false)
@@ -71,9 +72,8 @@ public class Transacao implements Serializable {
         this.idTransacao = idTransacao;
     }
 
-    public Transacao(Integer idTransacao, int tipoTransacao, Date dttransacao, int tipoPagamento) {
+    public Transacao(Integer idTransacao, Date dttransacao, int tipoPagamento) {
         this.idTransacao = idTransacao;
-        this.tipoTransacao = tipoTransacao;
         this.dttransacao = dttransacao;
         this.tipoPagamento = tipoPagamento;
     }
@@ -84,14 +84,6 @@ public class Transacao implements Serializable {
 
     public void setIdTransacao(Integer idTransacao) {
         this.idTransacao = idTransacao;
-    }
-
-    public int getTipoTransacao() {
-        return tipoTransacao;
-    }
-
-    public void setTipoTransacao(int tipoTransacao) {
-        this.tipoTransacao = tipoTransacao;
     }
 
     public String getDescricao() {
@@ -174,6 +166,14 @@ public class Transacao implements Serializable {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public TipoTransacao getIdTipoTransacao() {
+        return idTipoTransacao;
+    }
+
+    public void setIdTipoTransacao(TipoTransacao idTipoTransacao) {
+        this.idTipoTransacao = idTipoTransacao;
     }
     
 }

@@ -19,3 +19,13 @@ and open the template in the editor.
     height: 15px;
 }
 
+.label-Receita{
+    background-color: #1abc9c!important;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.label-Despesa{
+    background-color: #e74c3c!important;
+    color: rgba(255, 255, 255, 0.6);
+}
+
