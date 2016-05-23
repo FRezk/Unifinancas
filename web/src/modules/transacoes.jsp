@@ -13,6 +13,7 @@
 <%@page import="java.util.List"%>
 <%@page import="dao.Categoria"%>
 <%@page import="modelo.CategoriaDAO"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -64,16 +65,14 @@
                       <div class="col-sm-10">
                           <label for="categoria" class="control-label">Categoria</label>
                           <select name="categoria" class="form-control select2" style="width: 100%;">
-                              <%
-                                  CategoriaDAO categoriaDAO = new CategoriaDAO();
-                                  List<Categoria> listaCategoria;
-                                  listaCategoria = categoriaDAO.listar();
-                                  for (Categoria categoria : listaCategoria) {
-                              %>
-                              <option data-cor="<%= categoria.getCor() %>" value="<%= categoria.getIdCategoria() %>"><%= categoria.getNome() %></option>
-                              <%
-                                  }  
-                              %>
+                              
+                              <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
+                              <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
+                              
+                              <c:forEach items="${listaCategoria}" var="categoria">
+                                  <option data-cor="${categoria.getCor()}" value="${categoria.getIdCategoria()}">${categoria.getNome()}</option>
+                              </c:forEach>
+                                  
                           </select>
                       </div>
                   </div>
@@ -133,23 +132,14 @@
                             <div id="cartao-input" class="col-sm-4" style="display:none">
                                 <label class="control-label">Cartão</label>
                                 <select class="form-control select2-cartao" style="width: 100%;">
-                                    <%
-                                        CartaoDAO cartaoDAO = new CartaoDAO();
-                                        List<Cartao> listaCartao;
-                                        listaCartao = cartaoDAO.listar();
-                                        for (Cartao cartao : listaCartao) {
-                                            
-                                    %>
-                                    <option data-url-logo="<%= cartao.getIdBandeira().getLogoUrl() %>"            value="<%= cartao.getIdCartao() %>"><%= cartao.getNome() %></option>
-                                    <%
-                                        }
-                                    %>
-<!--                                    <option data-url-logo="src/img/bandeiras/visa-logo.png"            value="0">Visa</option>
-                                    <option data-url-logo="src/img/bandeiras/mastercard-logo.png"      value="1">Mastercard</option>
-                                    <option data-url-logo="src/img/bandeiras/americanexpress-logo.png" value="2">American Express</option>
-                                    <option data-url-logo="src/img/bandeiras/elo-logo.png"             value="3">Elo</option>
-                                    <option data-url-logo="src/img/bandeiras/discovernetwork-logo.png" value="4">Discover Network</option>
-                                    <option data-url-logo="src/img/bandeiras/outros-logo.png"          value="5">Outras Bandeiras</option>-->
+                                    
+                                    <jsp:useBean id="cartaoDAO" scope="page" class="modelo.CartaoDAO" />
+                                    <c:set var="listaCartao"  value="${cartaoDAO.listar()}" scope="page"/>
+                                    
+                                    <c:forEach items="${listaCartao}" var="cartao">
+                                        <option data-url-logo="${cartao.getIdBandeira().getLogoUrl()}" value="${cartao.getIdCartao()}">${cartao.getNome()}</option>
+                                    </c:forEach>
+                                        
                                 </select>
                             </div>
                             <div class="col-sm-4">
@@ -168,13 +158,9 @@
                             <div class="col-sm-10">
                                 <label for="categoria" class="control-label">Categoria</label>
                                 <select name="categoria" class="form-control select2" style="width: 100%;">
-                                    <%
-                                        for (Categoria categoria : listaCategoria) {
-                                    %>
-                                    <option data-cor="<%= categoria.getCor()%>" value="<%= categoria.getIdCategoria()%>"><%= categoria.getNome()%></option>
-                                    <%
-                                        }
-                                    %>
+                                    <c:forEach items="${listaCategoria}" var="categoria">
+                                        <option data-cor="${categoria.getCor()}" value="${categoria.getIdCategoria()}">${categoria.getNome()}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>
@@ -242,32 +228,27 @@
                             <th>Valor</th>
                             <th>Espécie</th>
                         </tr>
-                        <%
-                            TransacaoDAO transacaoDAO = new TransacaoDAO();
-                            List<Transacao> listaTransacao;
-                            listaTransacao = transacaoDAO.listar();
-                            for (Transacao transacao : listaTransacao) {
 
-                        %>
-                        <tr>
-                            <td><%= transacao.getDttransacao() %></td>
-                            <td><span class="label label-<%= transacao.getIdTipoTransacao().getNome()%>"><%= transacao.getIdTipoTransacao().getNome()%></span></td>
-                            <td><%= transacao.getDescricao() %></td>
-                            <td><%= transacao.getIdCategoria().getNome() %></td>
-                            <td align="right"><%= transacao.getValor() %></td>
-                            <% 
-                                if(transacao.getTipoPagamento() == 1) {
-                            %> <td>Dinheiro/Débito <img src="<%=transacao.getIdCartao().getIdBandeira().getLogoUrl()%>" class="bandeira-logo" title="<%= transacao.getIdCartao().getNome()%>"/></td> <%
-                                } else{
-                                    %> <td>Dinheiro/Débito</td> <%
-                                }
-                            
-                            %>
-                            
-                        </tr>
-                        <%
-                            }
-                        %>
+                        <jsp:useBean id="transacaoDAO" scope="page" class="modelo.TransacaoDAO" />
+                        
+                        <c:forEach items="${transacaoDAO.listar()}" var="transacao">
+                            <tr>
+                                <td>${transacao.getDttransacao()}</td>
+                                <td><span class="label label-${transacao.getIdTipoTransacao().getNome()}">${transacao.getIdTipoTransacao().getNome()}</span></td>
+                                <td>${transacao.getDescricao()}</td>
+                                <td>${transacao.getIdCategoria().getNome()}</td>
+                                <td align="right">${transacao.getValor()}</td>
+                                <c:choose>
+                                    <c:when test="${transacao.getTipoPagamento() == 1}">
+                                        <td>Crédito<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
+                                    </c:when>
+                                    <c:when test="${transacao.getTipoPagamento() == 0}">
+                                        <td>Dinheiro/Débito</td>
+                                    </c:when>
+                                </c:choose>
+                            </tr>
+                        </c:forEach>
+                        
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
