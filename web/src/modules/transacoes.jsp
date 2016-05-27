@@ -239,11 +239,11 @@
                                 <td>${transacao.getIdCategoria().getNome()}</td>
                                 <td align="right">${transacao.getValor()}</td>
                                 <c:choose>
-                                    <c:when test="${transacao.getTipoPagamento() == 1}">
-                                        <td>Crédito<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
+                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 1}">
+                                        <td>${transacao.getIdEspecie().getNome()}</td> 
                                     </c:when>
-                                    <c:when test="${transacao.getTipoPagamento() == 0}">
-                                        <td>Dinheiro/Débito</td>
+                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 2}">
+                                        <td>${transacao.getIdEspecie().getNome()}<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
                                     </c:when>
                                 </c:choose>
                             </tr>
