@@ -1,6 +1,5 @@
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="dao.Usuario"%>
 <%@page import="modelo.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

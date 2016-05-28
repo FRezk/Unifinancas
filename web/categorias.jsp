@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="template/dist/css/skins/skin-black.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="template/plugins/iCheck/flat/blue.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="template/plugins/colorpicker/bootstrap-colorpicker.min.css">
     <!-- Morris chart -->
     <!-- <link rel="stylesheet" href="template/plugins/morris/morris.css"> -->
     <!-- jvectormap -->
@@ -46,8 +48,11 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
+    <link rel="stylesheet" href="src/style/categoria.css">
     
     <%@include file="src/modules/main-scripts.jsp" %>
+    <!-- bootstrap color picker -->
+    <script src="template/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 
   </head>
   <body class="hold-transition skin-black sidebar-mini">
