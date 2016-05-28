@@ -5,15 +5,15 @@
  */
 package modelo;
 
-import dao.Conexao;
 import dao.Categoria;
+import dao.Conexao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Jefferson
+ * @author Fernando
  */
 public class CategoriaDAO {
     EntityManager em;
@@ -24,11 +24,12 @@ public class CategoriaDAO {
         em = emf.createEntityManager();
     }
     
-    public void incluir(Categoria obj) throws Exception {
+    public Categoria incluir(Categoria obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
             em.getTransaction().commit();
+            return em.merge(obj);
         } catch (RuntimeException e) {
             em.getTransaction().rollback();
             throw e;
@@ -61,7 +62,8 @@ public class CategoriaDAO {
         
         try {
             em.getTransaction().begin();
-            em.remove(obj);
+            Categoria delete = em.merge(obj);
+            em.remove(delete);
             em.getTransaction().commit();
         } catch (RuntimeException e) {
             em.getTransaction().rollback();
@@ -73,4 +75,7 @@ public class CategoriaDAO {
     public void fechaEmf() {
         Conexao.closeConexao();
     }
+    
+
+    
 }

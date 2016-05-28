@@ -6,7 +6,6 @@
 package dao;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,17 +14,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author Jefferson
+ * @author Fernando
  */
 @Entity
 @Table(name = "categoria")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")})
+    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c ORDER BY c.idCategoria desc")})
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,26 +34,16 @@ public class Categoria implements Serializable {
     private Integer idCategoria;
     @Column(name = "id_usuario")
     private Integer idUsuario;
-    @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
     @Column(name = "cor")
     private String cor;
-    @OneToMany(mappedBy = "idCategoria")
-    private List<Transacao> transacaoList;
 
     public Categoria() {
     }
 
     public Categoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
-    }
-
-    public Categoria(Integer idCategoria, String nome, String cor) {
-        this.idCategoria = idCategoria;
-        this.nome = nome;
-        this.cor = cor;
     }
 
     public Integer getIdCategoria() {
@@ -88,14 +76,6 @@ public class Categoria implements Serializable {
 
     public void setCor(String cor) {
         this.cor = cor;
-    }
-
-    public List<Transacao> getTransacaoList() {
-        return transacaoList;
-    }
-
-    public void setTransacaoList(List<Transacao> transacaoList) {
-        this.transacaoList = transacaoList;
     }
 
     @Override

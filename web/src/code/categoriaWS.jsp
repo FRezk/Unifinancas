@@ -28,9 +28,10 @@
         categoriaObj.setNome(catnome);
         categoriaObj.setCor(catcor);
         
-        categoriaDAO.incluir(categoriaObj);
+        Categoria teste = categoriaDAO.incluir(categoriaObj);
         
         json.put("idStatus", 1);
+        json.put("idcat", teste.getIdCategoria());
         json.put("dsStatus", "Categoria cadastrada com sucesso!");
     }else if(funcao.equalsIgnoreCase("APAGAR")) {
         Integer idcat = Integer.parseInt(request.getParameter("idcat"));

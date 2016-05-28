@@ -148,7 +148,7 @@
                     if(r.idStatus == 0){
                         alert(r.dsStatus);
                     } else if(r.idStatus == 1){
-                        alert(r.dsStatus);
+                        $('#customCat-list').prepend('<li data-idcat="'+r.idcat+'"><div class="cat-cor" style="background-color:'+_catcor+'"></div><span class="control-label">'+_catnome+'</span><div class="tools"><i class="fa fa-times"></i></div></li>');
                     }
                }
             });

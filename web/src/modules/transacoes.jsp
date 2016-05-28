@@ -247,7 +247,7 @@
                                 <td>${transacao.getDttransacao()}</td>
                                 <td><span class="label label-${transacao.getIdTipoTransacao().getNome()}">${transacao.getIdTipoTransacao().getNome()}</span></td>
                                 <td>${transacao.getDescricao()}</td>
-                                <td>${transacao.getIdCategoria().getNome()}</td>
+                                <td><i class="fa fa-tag" style="color:${transacao.getIdCategoria().getCor()}"></i> ${transacao.getIdCategoria().getNome()}</td>
                                 <td align="right">${transacao.getValor()}</td>
                                 <c:choose>
                                     <c:when test="${transacao.getIdEspecie().getIdEspecie() == 1}">
