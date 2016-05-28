@@ -4,6 +4,7 @@
     Author     : Jefferson
 --%>
 
+<%@page import="dao.Especie"%>
 <%@page import="dao.TipoTransacao"%>
 <%@page import="dao.Categoria"%>
 <%@page import="dao.Bandeira"%>
@@ -33,6 +34,8 @@
     Double dvalor      = Double.parseDouble(request.getParameter("valor"));
     String sdtcadastro = (String) request.getParameter("dtcadastro");
     Integer icategoria  = Integer.parseInt(request.getParameter("categoria"));
+    Integer iEspecie = Integer.parseInt(request.getParameter("especie"));
+    System.out.println(iEspecie);
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dtcadastro = sdf.parse(sdtcadastro);
@@ -54,6 +57,8 @@
         Transacao transacaoObj = new Transacao();
         Categoria categoriaObj = new Categoria();
         TipoTransacao tipoTransacaoObj = new TipoTransacao();
+        Especie especieObj = new Especie();
+        especieObj.setIdEspecie(iEspecie);
 
         categoriaObj.setIdCategoria(icategoria);
 
@@ -66,12 +71,12 @@
             transacaoObj.setDttransacao(dtcadastro);
             transacaoObj.setIdUsuario(usuarioObj);
             transacaoObj.setIdCategoria(categoriaObj);
-            transacaoObj.setTipoPagamento(0);//dinheiro          
-
+            
             transacaoDAO.incluir(transacaoObj);
             
             json.put("idStatus", 1);
             json.put("dsStatus", "Receita Cadastrada com sucesso!");
+            
         }else if (stransacao.equalsIgnoreCase("DESPESA")) {
             Integer iespecie = Integer.parseInt(request.getParameter("especie"));
             String scartao = (String) request.getParameter("cartao");
@@ -85,7 +90,7 @@
             transacaoObj.setDttransacao(dtcadastro);
             transacaoObj.setIdUsuario(usuarioObj);
             transacaoObj.setIdCategoria(categoriaObj);
-            transacaoObj.setTipoPagamento(iespecie);
+            transacaoObj.setIdEspecie(especieObj);
             
             
             if(!scartao.equalsIgnoreCase("")){

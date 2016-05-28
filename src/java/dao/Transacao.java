@@ -6,7 +6,6 @@
 package dao;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,21 +23,13 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Jefferson
+ * @author Fernando
  */
 @Entity
 @Table(name = "transacao")
 @NamedQueries({
     @NamedQuery(name = "Transacao.findAll", query = "SELECT t FROM Transacao t")})
 public class Transacao implements Serializable {
-
-    @JoinColumn(name = "id_tipo_transacao", referencedColumnName = "id_tipo_transacao")
-    @ManyToOne
-    private TipoTransacao idTipoTransacao;
-
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "valor")
-    private Double valor;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,19 +39,25 @@ public class Transacao implements Serializable {
     private Integer idTransacao;
     @Column(name = "descricao")
     private String descricao;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "valor")
+    private Double valor;
     @Basic(optional = false)
     @Column(name = "dttransacao")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dttransacao;
-    @Basic(optional = false)
-    @Column(name = "tipo_pagamento")
-    private int tipoPagamento;
     @JoinColumn(name = "id_cartao", referencedColumnName = "id_cartao")
     @ManyToOne
     private Cartao idCartao;
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     @ManyToOne
     private Categoria idCategoria;
+    @JoinColumn(name = "id_especie", referencedColumnName = "id_especie")
+    @ManyToOne
+    private Especie idEspecie;
+    @JoinColumn(name = "id_tipo_transacao", referencedColumnName = "id_tipo_transacao")
+    @ManyToOne
+    private TipoTransacao idTipoTransacao;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
     private Usuario idUsuario;
@@ -72,10 +69,9 @@ public class Transacao implements Serializable {
         this.idTransacao = idTransacao;
     }
 
-    public Transacao(Integer idTransacao, Date dttransacao, int tipoPagamento) {
+    public Transacao(Integer idTransacao, Date dttransacao) {
         this.idTransacao = idTransacao;
         this.dttransacao = dttransacao;
-        this.tipoPagamento = tipoPagamento;
     }
 
     public Integer getIdTransacao() {
@@ -94,6 +90,13 @@ public class Transacao implements Serializable {
         this.descricao = descricao;
     }
 
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 
     public Date getDttransacao() {
         return dttransacao;
@@ -101,14 +104,6 @@ public class Transacao implements Serializable {
 
     public void setDttransacao(Date dttransacao) {
         this.dttransacao = dttransacao;
-    }
-
-    public int getTipoPagamento() {
-        return tipoPagamento;
-    }
-
-    public void setTipoPagamento(int tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
     }
 
     public Cartao getIdCartao() {
@@ -125,6 +120,22 @@ public class Transacao implements Serializable {
 
     public void setIdCategoria(Categoria idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public Especie getIdEspecie() {
+        return idEspecie;
+    }
+
+    public void setIdEspecie(Especie idEspecie) {
+        this.idEspecie = idEspecie;
+    }
+
+    public TipoTransacao getIdTipoTransacao() {
+        return idTipoTransacao;
+    }
+
+    public void setIdTipoTransacao(TipoTransacao idTipoTransacao) {
+        this.idTipoTransacao = idTipoTransacao;
     }
 
     public Usuario getIdUsuario() {
@@ -158,22 +169,6 @@ public class Transacao implements Serializable {
     @Override
     public String toString() {
         return "dao.Transacao[ idTransacao=" + idTransacao + " ]";
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public TipoTransacao getIdTipoTransacao() {
-        return idTipoTransacao;
-    }
-
-    public void setIdTipoTransacao(TipoTransacao idTipoTransacao) {
-        this.idTipoTransacao = idTipoTransacao;
     }
     
 }
