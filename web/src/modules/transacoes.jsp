@@ -16,6 +16,7 @@
 <%@page import="dao.Categoria"%>
 <%@page import="modelo.CategoriaDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -77,7 +78,7 @@
                                     <c:when test="${categoria.getIdUsuario() == 0 || categoria.getIdUsuario() == sessionScope.idUsuario}">
                                         <option data-cor="${categoria.getCor()}" value="${categoria.getIdCategoria()}">${categoria.getNome()}</option>
                                     </c:when>
-                                </c:choose>
+                                  </c:choose>
                               </c:forEach>
                                   
                           </select>
@@ -148,7 +149,12 @@
                                     <c:set var="listaCartao"  value="${cartaoDAO.listar()}" scope="page"/>
                                     
                                     <c:forEach items="${listaCartao}" var="cartao">
-                                        <option data-url-logo="${cartao.getIdBandeira().getLogoUrl()}" value="${cartao.getIdCartao()}">${cartao.getNome()}</option>
+                                        <c:choose>
+                                            <c:when test="${cartao.getIdUsuario().getIdUsuario() == sessionScope.idUsuario}">
+                                                <option data-url-logo="${cartao.getIdBandeira().getLogoUrl()}" value="${cartao.getIdCartao()}">${cartao.getNome()}</option>
+                                            </c:when>
+                                        </c:choose>
+                                        
                                     </c:forEach>
                                         
                                 </select>
@@ -219,7 +225,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Maio 2016</h3>
+                    <h3 class="box-title">Maio <small>2016</small></h3>
                     <div class="box-tools">
                         <div class="input-group" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Pesquisar">
@@ -242,22 +248,27 @@
 
                         <jsp:useBean id="transacaoDAO" scope="page" class="modelo.TransacaoDAO" />
                         
-                        <c:forEach items="${transacaoDAO.listar()}" var="transacao">
-                            <tr>
-                                <td>${transacao.getDttransacao()}</td>
-                                <td><span class="label label-${transacao.getIdTipoTransacao().getNome()}">${transacao.getIdTipoTransacao().getNome()}</span></td>
-                                <td>${transacao.getDescricao()}</td>
-                                <td><i class="fa fa-tag" style="color:${transacao.getIdCategoria().getCor()}"></i> ${transacao.getIdCategoria().getNome()}</td>
-                                <td align="right">${transacao.getValor()}</td>
-                                <c:choose>
-                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 1}">
-                                        <td>${transacao.getIdEspecie().getNome()}</td> 
-                                    </c:when>
-                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 2}">
-                                        <td>${transacao.getIdEspecie().getNome()}<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
-                                    </c:when>
-                                </c:choose>
-                            </tr>
+                        <c:forEach items="${transacaoDAO.listarDesc()}" var="transacao">
+                            <c:choose>
+                                <c:when test="${transacao.getIdUsuario().getIdUsuario() == sessionScope.idUsuario }">
+                                    <tr>
+                                        <td><fmt:formatDate value="${transacao.getDttransacao()}" pattern="dd/MM/yyyy"/></td>
+                                        <td><span class="label label-${transacao.getIdTipoTransacao().getNome()}"> ${transacao.getIdTipoTransacao().getNome() } </span></td>
+                                        <td>${transacao.getDescricao()}</td>
+                                        <td><i class="fa fa-tag" style="color:${transacao.getIdCategoria().getCor()}"></i> ${transacao.getIdCategoria().getNome()}</td>
+                                        <td align="right">R$${transacao.getValor()}</td>
+                                        <c:choose>
+                                            <c:when test="${transacao.getIdEspecie().getIdEspecie() == 1}">
+                                                <td>${transacao.getIdEspecie().getNome()}</td> 
+                                            </c:when>
+                                            <c:when test="${transacao.getIdEspecie().getIdEspecie() == 2}">
+                                                <td>${transacao.getIdEspecie().getNome()}<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
+                                                </c:when>
+                                            </c:choose>
+                                    </tr>
+                                </c:when>
+                            </c:choose>
+                            
                         </c:forEach>
                         
                     </table>

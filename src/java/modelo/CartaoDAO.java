@@ -24,11 +24,12 @@ public class CartaoDAO {
         em = emf.createEntityManager();
     }
     
-    public void incluir(Cartao obj) throws Exception {
+    public Cartao incluir(Cartao obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
             em.getTransaction().commit();
+            return em.merge(obj);
         } catch (RuntimeException e) {
             em.getTransaction().rollback();
             throw e;
@@ -41,6 +42,9 @@ public class CartaoDAO {
 
     public List<Cartao> listar() throws Exception {
         return em.createNamedQuery("Cartao.findAll").getResultList();
+    }
+    public List<Cartao> listarDesc() throws Exception {
+        return em.createNamedQuery("Cartao.findAllDesc").getResultList();
     }
     
     public void alterar(Cartao obj) throws Exception {
@@ -61,10 +65,12 @@ public class CartaoDAO {
         
         try {
             em.getTransaction().begin();
-            em.remove(obj);
+            Cartao delete = em.merge(obj);
+            em.remove(delete);
             em.getTransaction().commit();
         } catch (RuntimeException e) {
             em.getTransaction().rollback();
+            
         } finally {
             em.close();
         }

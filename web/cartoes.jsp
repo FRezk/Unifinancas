@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="src/lib/font-awesome/css/font-awesome.min.css"/>
     <!-- Ionicons -->
     <link rel="stylesheet" type="text/css" href="template/ionicons/css/ionicons.min.css"/>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="template/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="template/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -27,6 +29,7 @@
     <link rel="stylesheet" href="template/dist/css/skins/skin-black.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="template/plugins/iCheck/flat/blue.css">
+    
     <!-- Morris chart -->
     <!-- <link rel="stylesheet" href="template/plugins/morris/morris.css"> -->
     <!-- jvectormap -->
@@ -46,8 +49,11 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
-
+    <link rel="stylesheet" href="src/style/cartoes.css">
+    
     <%@include file="src/modules/main-scripts.jsp" %>
+    <!-- Select2 -->
+    <script src="template/plugins/select2/select2.full.min.js"></script>
     
   </head>
   <body class="hold-transition skin-black sidebar-mini">
@@ -65,6 +71,10 @@
       <%@include file="src/modules/control-sidebar.jsp" %>
       
     </div><!-- ./wrapper -->
+    
+    
+    <!-- CUSTOM SCRIPT-->
+    <script src="src/js/cartoes.js"></script>
 
   </body>
 </html>

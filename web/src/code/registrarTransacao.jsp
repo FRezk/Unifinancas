@@ -34,8 +34,6 @@
     Double dvalor      = Double.parseDouble(request.getParameter("valor"));
     String sdtcadastro = (String) request.getParameter("dtcadastro");
     Integer icategoria  = Integer.parseInt(request.getParameter("categoria"));
-    Integer iEspecie = Integer.parseInt(request.getParameter("especie"));
-    System.out.println(iEspecie);
     
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date dtcadastro = sdf.parse(sdtcadastro);
@@ -58,11 +56,14 @@
         Categoria categoriaObj = new Categoria();
         TipoTransacao tipoTransacaoObj = new TipoTransacao();
         Especie especieObj = new Especie();
-        especieObj.setIdEspecie(iEspecie);
+        
 
         categoriaObj.setIdCategoria(icategoria);
 
         if (stransacao.equalsIgnoreCase("RECEITA")) {
+            especieObj.setIdEspecie(1);//dinheiro
+            transacaoObj.setIdEspecie(especieObj);
+            
             tipoTransacaoObj.setIdTipoTransacao(2);
             transacaoObj.setIdTipoTransacao(tipoTransacaoObj);//receita
             transacaoObj.setDescricao(sdescricao);
@@ -79,6 +80,7 @@
             
         }else if (stransacao.equalsIgnoreCase("DESPESA")) {
             Integer iespecie = Integer.parseInt(request.getParameter("especie"));
+            especieObj.setIdEspecie(iespecie);//cartao
             String scartao = (String) request.getParameter("cartao");
             
 

@@ -27,7 +27,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cartao")
 @NamedQueries({
-    @NamedQuery(name = "Cartao.findAll", query = "SELECT c FROM Cartao c")})
+    @NamedQuery(name = "Cartao.findAll", query = "SELECT c FROM Cartao c"),
+    @NamedQuery(name = "Cartao.findAllDesc", query = "SELECT c FROM Cartao c ORDER BY c.idCartao DESC")})
 public class Cartao implements Serializable {
 
     private static final long serialVersionUID = 1L;

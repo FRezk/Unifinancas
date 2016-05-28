@@ -43,7 +43,7 @@
                     </ul>
                     <ul id="customCat-list" class="todo-list">
                         <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
-                        <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
+                        <c:set var="listaCategoria"  value="${categoriaDAO.listarDesc()}" scope="page"/>
 
                         <c:forEach items="${listaCategoria}" var="categoria">
                             <c:choose>
@@ -71,6 +71,7 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <ul class="todo-list no-edit">
+                        <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
                         <c:forEach items="${listaCategoria}" var="categoria">
                             <c:choose>
                                 <c:when test="${categoria.getIdUsuario() == 0}">
@@ -99,7 +100,7 @@
             
         });
         
-        $('.delcat_bt').on('click', function(){
+        var delcat = function(){
            var $container =  $(this).parent().parent();
            var _idcat = $container.attr('data-idcat');
            $.ajax({
@@ -120,8 +121,9 @@
                     }
                }
             });
-           console.log($container.attr('data-idcat'))
-        });
+           console.log($container.attr('data-idcat'));
+        };
+        $('.delcat_bt').on('click', delcat);
         
         $('#newcat_form').on('submit', function(e){
             var _catcor = this.catcolor.value;
@@ -148,7 +150,13 @@
                     if(r.idStatus == 0){
                         alert(r.dsStatus);
                     } else if(r.idStatus == 1){
-                        $('#customCat-list').prepend('<li data-idcat="'+r.idcat+'"><div class="cat-cor" style="background-color:'+_catcor+'"></div><span class="control-label">'+_catnome+'</span><div class="tools"><i class="fa fa-times"></i></div></li>');
+                        var newcat = '<li data-idcat="'+r.idcat+'"><div class="cat-cor" style="background-color:'+_catcor+'"></div><span class="control-label">'+_catnome+'</span><div class="tools"><i class="fa fa-times delcat_bt"></i></div></li>';
+                        $('#customCat-list').prepend(newcat);
+                        //o novo registro de categoria vem com um botao de deletar categoria, mas precisa ser adicionado o evento de deletar categoria somente a ele
+                        $('#customCat-list li[data-idcat='+r.idcat+'] .delcat_bt').on('click', delcat);
+                        $('#newcat_form')[0].reset();
+                        $("#newcat_form input[name=catcolor]").val('');
+                        $("#newcat_form .my-colorpicker")[0].style.backgroundColor = "#DDD";
                     }
                }
             });

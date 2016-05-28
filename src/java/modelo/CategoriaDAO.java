@@ -43,6 +43,9 @@ public class CategoriaDAO {
     public List<Categoria> listar() throws Exception {
         return em.createNamedQuery("Categoria.findAll").getResultList();
     }
+    public List<Categoria> listarDesc() throws Exception {
+        return em.createNamedQuery("Categoria.findAllDesc").getResultList();
+    }
     
     public void alterar(Categoria obj) throws Exception {
         

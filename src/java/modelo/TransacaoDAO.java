@@ -42,6 +42,9 @@ public class TransacaoDAO {
     public List<Transacao> listar() throws Exception {
         return em.createNamedQuery("Transacao.findAll").getResultList();
     }
+    public List<Transacao> listarDesc() throws Exception {
+        return em.createNamedQuery("Transacao.findAllDesc").getResultList();
+    }
     
     public void alterar(Transacao obj) throws Exception {
         
