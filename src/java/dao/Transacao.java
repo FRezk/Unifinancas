@@ -53,7 +53,7 @@ public class Transacao implements Serializable {
     @ManyToOne
     private Categoria idCategoria;
     @JoinColumn(name = "id_especie", referencedColumnName = "id_especie")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Especie idEspecie;
     @JoinColumn(name = "id_tipo_transacao", referencedColumnName = "id_tipo_transacao")
     @ManyToOne

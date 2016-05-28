@@ -4,6 +4,8 @@
     Author     : Fernando
 --%>
 
+<%@page import="dao.Especie"%>
+<%@page import="modelo.EspecieDAO"%>
 <%@page import="dao.Transacao"%>
 <%@page import="modelo.TransacaoDAO"%>
 <%@page import="dao.Bandeira"%>
@@ -67,10 +69,15 @@
                           <select name="categoria" class="form-control select2" style="width: 100%;">
                               
                               <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
+                              
                               <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
                               
                               <c:forEach items="${listaCategoria}" var="categoria">
-                                  <option data-cor="${categoria.getCor()}" value="${categoria.getIdCategoria()}">${categoria.getNome()}</option>
+                                  <c:choose>
+                                    <c:when test="${categoria.getIdUsuario() == 0 || categoria.getIdUsuario() == sessionScope.idUsuario}">
+                                        <option data-cor="${categoria.getCor()}" value="${categoria.getIdCategoria()}">${categoria.getNome()}</option>
+                                    </c:when>
+                                </c:choose>
                               </c:forEach>
                                   
                           </select>
@@ -125,8 +132,12 @@
                             <div class="col-sm-4">
                                 <label class="control-label">Espécie</label>
                                 <select name="especie" id="especie" class="form-control" style="width: 100%;">
-                                    <option value="0">Dinheiro/Débito</option>
-                                    <option value="1">Crédito</option>
+                                    <jsp:useBean id="especieDAO" scope="page" class="modelo.EspecieDAO"/>
+                                    <c:set var="listaEspecie" value="${especieDAO.listar()}" scope="page"/>
+                                    
+                                    <c:forEach items="${listaEspecie}" var="especie">
+                                        <option value="${especie.getIdEspecie()}">${especie.getNome()}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div id="cartao-input" class="col-sm-4" style="display:none">
@@ -289,7 +300,7 @@
         $("#valor").inputmask();
         
         $('#especie').on('change', function(){
-           if(this.options[this.selectedIndex].value == "1"){
+           if(this.options[this.selectedIndex].value == "2"){
                $('#cartao-input').css('display', 'block');
                $('#cartao-input select').attr('name', 'cartao');
            }else{
