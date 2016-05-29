@@ -35,16 +35,16 @@
                       <i class="fa fa-credit-card"></i> <span>Cartões</span>
                   </a>
               </li>
-              <li>
-                  <a href="contas.jsp"> <!-- Falta criar o front end e back end  -->
+<!--              <li>
+                  <a href="contas.jsp">  Falta criar o front end e back end  
                       <i class="fa fa-bank"></i> <span>Contas</span>
                   </a>
               </li>
               <li>
-                  <a href="estabelecimentos.jsp"> <!-- Falta criar o front end e back end  -->
+                  <a href="estabelecimentos.jsp">  Falta criar o front end e back end  
                       <i class="fa fa-archive"></i> <span>Pessoa Física/Jurídica</span>
                   </a>
-              </li>
+              </li>-->
               <li>
                   <a href="categorias.jsp"> <!-- Falta criar o front end e back end  -->
                       <i class="fa fa-tags"></i> <span>Categorias</span>
