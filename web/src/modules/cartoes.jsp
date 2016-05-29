@@ -57,7 +57,7 @@
                     <br>
                     <ul id="customCartao-list" class="todo-list">
                         <jsp:useBean id="cartaoDAO" scope="page" class="modelo.CartaoDAO" />
-                        <c:set var="listaCartao"  value="${cartaoDAO.listarDesc()}" scope="page"/>
+                        <c:set var="listaCartao"  value="${cartaoDAO.listarActive()}" scope="page"/>
 
                         <c:forEach items="${listaCartao}" var="cartao">
                             <c:choose>

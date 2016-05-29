@@ -6,7 +6,6 @@
 package dao;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,18 +16,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author Jefferson
+ * @author Fernando
  */
 @Entity
 @Table(name = "cartao")
 @NamedQueries({
     @NamedQuery(name = "Cartao.findAll", query = "SELECT c FROM Cartao c"),
-    @NamedQuery(name = "Cartao.findAllDesc", query = "SELECT c FROM Cartao c ORDER BY c.idCartao DESC")})
+    @NamedQuery(name = "Cartao.findActive", query = "SELECT c FROM Cartao c where c.ativo = 1 ORDER BY c.idCartao desc"),
+})
 public class Cartao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,14 +39,14 @@ public class Cartao implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
+    @Column(name = "ativo")
+    private Integer ativo;
     @JoinColumn(name = "id_bandeira", referencedColumnName = "id_bandeira")
     @ManyToOne
     private Bandeira idBandeira;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
     private Usuario idUsuario;
-    @OneToMany(mappedBy = "idCartao")
-    private List<Transacao> transacaoList;
 
     public Cartao() {
     }
@@ -77,6 +76,14 @@ public class Cartao implements Serializable {
         this.nome = nome;
     }
 
+    public Integer getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Integer ativo) {
+        this.ativo = ativo;
+    }
+
     public Bandeira getIdBandeira() {
         return idBandeira;
     }
@@ -91,14 +98,6 @@ public class Cartao implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public List<Transacao> getTransacaoList() {
-        return transacaoList;
-    }
-
-    public void setTransacaoList(List<Transacao> transacaoList) {
-        this.transacaoList = transacaoList;
     }
 
     @Override

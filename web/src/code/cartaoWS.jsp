@@ -36,6 +36,7 @@
         cartaoObj.setIdBandeira(bandeiraObj);
         cartaoObj.setIdUsuario(usuarioObj);
         cartaoObj.setNome(nomeCartao);
+        cartaoObj.setAtivo(1); // Inserir com Status Ativo
         
         Cartao cartaoInserido = cartaoDAO.incluir(cartaoObj);
         
@@ -51,17 +52,7 @@
         Integer idcartao = Integer.parseInt(request.getParameter("idcartao"));
         
         CartaoDAO cartaoDAO = new CartaoDAO();
-        Cartao cartaoObj = new Cartao();
-        
-        Usuario usuarioObj = new Usuario();
-        usuarioObj.setIdUsuario(idusuario);
-        
-        cartaoObj.setIdCartao(idcartao);
-        cartaoObj.setIdUsuario(usuarioObj);
-        
-        cartaoDAO.excluir(cartaoObj);
-        
-        
+        cartaoDAO.desativar(idcartao);
         json.put("idStatus", 1);
         json.put("dsStatus", "Cartao excluido com sucesso!");
         json.put("idcartao", idcartao);

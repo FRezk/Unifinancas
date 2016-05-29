@@ -47,6 +47,26 @@ public class CartaoDAO {
         return em.createNamedQuery("Cartao.findAllDesc").getResultList();
     }
     
+    public List<Cartao> listarActive() throws Exception {
+        return em.createNamedQuery("Cartao.findActive").getResultList();
+    }
+    
+    public void desativar(Integer idCartao) throws Exception {
+        Cartao managed = new Cartao();
+        try{
+        em.getTransaction().begin();
+        managed = em.find(managed.getClass(), idCartao);
+        managed.setAtivo(0);
+        em.persist(managed);
+        em.getTransaction().commit();
+        } catch(RuntimeException e){
+            em.getTransaction().rollback();
+            throw e;
+        } finally{
+        em.close();
+        }
+    }
+    
     public void alterar(Cartao obj) throws Exception {
         
         try {
