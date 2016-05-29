@@ -42,7 +42,7 @@
               </li>
               <li>
                   <a href="estabelecimentos.jsp"> <!-- Falta criar o front end e back end  -->
-                      <i class="fa fa-archive"></i> <span>Estabelecimentos</span>
+                      <i class="fa fa-archive"></i> <span>Pessoa Física/Jurídica</span>
                   </a>
               </li>
               <li>
