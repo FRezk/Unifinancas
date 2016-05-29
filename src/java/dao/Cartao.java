@@ -26,6 +26,7 @@ import javax.persistence.Table;
 @Table(name = "cartao")
 @NamedQueries({
     @NamedQuery(name = "Cartao.findAll", query = "SELECT c FROM Cartao c"),
+    @NamedQuery(name = "Cartao.findAllDesc", query = "SELECT c FROM Cartao c ORDER BY c.idCartao desc"),
     @NamedQuery(name = "Cartao.findActive", query = "SELECT c FROM Cartao c where c.ativo = 1 ORDER BY c.idCartao desc"),
 })
 public class Cartao implements Serializable {

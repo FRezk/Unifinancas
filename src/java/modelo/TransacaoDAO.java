@@ -7,9 +7,11 @@ package modelo;
 
 import dao.Conexao;
 import dao.Transacao;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  *
@@ -44,6 +46,11 @@ public class TransacaoDAO {
     }
     public List<Transacao> listarDesc() throws Exception {
         return em.createNamedQuery("Transacao.findAllDesc").getResultList();
+    }
+    
+    public List<Transacao> gastoPorCategoria() throws Exception {
+        Query query = em.createNativeQuery("Select id_categoria, count(*), sum(valor) as total From transacao Where id_tipo_transacao = 1 Group By id_categoria");
+        return query.getResultList();
     }
     
     public void alterar(Transacao obj) throws Exception {

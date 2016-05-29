@@ -146,7 +146,7 @@
                                 <select class="form-control select2-cartao" style="width: 100%;">
                                     
                                     <jsp:useBean id="cartaoDAO" scope="page" class="modelo.CartaoDAO" />
-                                    <c:set var="listaCartao"  value="${cartaoDAO.listar()}" scope="page"/>
+                                    <c:set var="listaCartao"  value="${cartaoDAO.listarActive()}" scope="page"/>
                                     
                                     <c:forEach items="${listaCartao}" var="cartao">
                                         <c:choose>
