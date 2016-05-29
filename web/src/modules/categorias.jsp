@@ -43,7 +43,7 @@
                     </ul>
                     <ul id="customCat-list" class="todo-list">
                         <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
-                        <c:set var="listaCategoria"  value="${categoriaDAO.listarDesc()}" scope="page"/>
+                        <c:set var="listaCategoria"  value="${categoriaDAO.listarAtivo()}" scope="page"/>
 
                         <c:forEach items="${listaCategoria}" var="categoria">
                             <c:choose>
@@ -117,7 +117,7 @@
                         alert(r.dsStatus);
                     } else if(r.idStatus == 1){
                         $container.remove();
-                        console.log(r.dsStatus, r.idcat  );
+                        console.log(r.dsStatus, r.idcat);
                     }
                }
             });

@@ -24,8 +24,12 @@ import javax.persistence.Table;
 @Table(name = "categoria")
 @NamedQueries({
     @NamedQuery(name = "Categoria.findAllDesc", query = "SELECT c FROM Categoria c ORDER BY c.idCategoria desc"),
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")})
+    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
+    @NamedQuery(name = "Categoria.findAtivo", query = "SELECT c FROM Categoria c where c.ativo = 1 ORDER BY c.idCategoria desc")
+})
 public class Categoria implements Serializable {
+
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,6 +43,9 @@ public class Categoria implements Serializable {
     private String nome;
     @Column(name = "cor")
     private String cor;
+    @Basic(optional = false)
+    @Column(name = "ativo")
+    private int ativo;
 
     public Categoria() {
     }
@@ -102,6 +109,14 @@ public class Categoria implements Serializable {
     @Override
     public String toString() {
         return "dao.Categoria[ idCategoria=" + idCategoria + " ]";
+    }
+
+    public int getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
     }
     
 }

@@ -46,6 +46,9 @@ public class CategoriaDAO {
     public List<Categoria> listarDesc() throws Exception {
         return em.createNamedQuery("Categoria.findAllDesc").getResultList();
     }
+    public List<Categoria> listarAtivo() throws Exception {
+        return em.createNamedQuery("Categoria.findAtivo").getResultList();
+    }
     
     public void alterar(Categoria obj) throws Exception {
         
@@ -54,6 +57,22 @@ public class CategoriaDAO {
             em.merge(obj);
             em.getTransaction().commit();
         } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void desativar(Integer idCat) throws Exception {
+        Categoria managed = new Categoria();
+        try{
+            em.getTransaction().begin();
+            managed = em.find(Categoria.class, idCat);
+            managed.setAtivo(0);
+            em.persist(managed);
+            em.getTransaction().commit();
+        } catch(RuntimeException e){
             em.getTransaction().rollback();
             throw e;
         } finally {

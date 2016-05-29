@@ -27,6 +27,7 @@
         categoriaObj.setIdUsuario(idusuario);
         categoriaObj.setNome(catnome);
         categoriaObj.setCor(catcor);
+        categoriaObj.setAtivo(1);
         
         Categoria teste = categoriaDAO.incluir(categoriaObj);
         
@@ -37,14 +38,7 @@
         Integer idcat = Integer.parseInt(request.getParameter("idcat"));
         
         CategoriaDAO categoriaDAO = new CategoriaDAO();
-        Categoria categoriaObj = new Categoria();
-        
-        categoriaObj.setIdCategoria(idcat);
-        categoriaObj.setIdUsuario(idusuario);
-
-        categoriaDAO.excluir(categoriaObj);
-        
-        
+        categoriaDAO.desativar(idcat);
         json.put("idStatus", 1);
         json.put("dsStatus", "Categoria excluida com sucesso!");
         json.put("idcat", idcat);

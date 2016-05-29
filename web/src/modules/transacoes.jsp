@@ -71,7 +71,7 @@
                               
                               <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
                               
-                              <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
+                              <c:set var="listaCategoria"  value="${categoriaDAO.listarAtivo()}" scope="page"/>
                               
                               <c:forEach items="${listaCategoria}" var="categoria">
                                   <c:choose>
@@ -175,7 +175,7 @@
                             <div class="col-sm-10">
                                 <label for="categoria" class="control-label">Categoria</label>
                                 <select name="categoria" class="form-control select2" style="width: 100%;">
-                                <c:set var="listaCategoria"  value="${categoriaDAO.listar()}" scope="page"/>
+                                <c:set var="listaCategoria"  value="${categoriaDAO.listarAtivo()}" scope="page"/>
                                 <c:forEach items="${listaCategoria}" var="categoria">
                                   <c:choose>
                                     <c:when test="${categoria.getIdUsuario() == 0 || categoria.getIdUsuario() == sessionScope.idUsuario}">
