@@ -46,7 +46,7 @@
     <![endif]-->
     
     <!-- CUSTOM STYLE -->
-    <!--<link rel="stylesheet" href="src/style/lista-produtos.css">-->
+    <link rel="stylesheet" href="src/style/home.css">
     
     
     <%@include file="src/modules/main-scripts.jsp" %>

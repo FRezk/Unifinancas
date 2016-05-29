@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/05/2016, 17:41:12
+    Author     : Jefferson
+*/
+
+.product-img{
+    width: 50px;
+    height: 50px;
+    text-align: center!important;
+}
+.product-img.Receita{
+    background-color: #1abc9c!important;
+}
+.product-img.Despesa{
+    background-color: #e74c3c!important;
+    
+}
+.tipoTransacao-icon{ 
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 50px;
+    font-size: 1.2em;
+}
+
