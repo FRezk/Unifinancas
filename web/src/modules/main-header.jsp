@@ -19,13 +19,13 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="/Unifinancas/template/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+            <img src="src/img/profile/default-profile.png" class="user-image" alt="User Image">
             <span class="hidden-xs"><%=session.getAttribute("nomeUsuario")%></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="/Unifinancas/template/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="src/img/profile/default-profile.png" class="img-circle" alt="User Image">
               <p>
                 <%=session.getAttribute("nomeUsuario")%>
                 <small>Membro desde. 2015</small>

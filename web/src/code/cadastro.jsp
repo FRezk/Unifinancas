@@ -76,7 +76,8 @@
     json.put("idStatus", 1);
     json.put("dsStatus", "Cadastro criado com sucesso!");
     
-    session.setAttribute("nomeUsuario", nomeUsuario );
-    session.setAttribute("emailUsuario", emailUsuario );
+    json.put("email", emailUsuario);
+    json.put("senha", senhaUsuario);
+    
     out.print(json);
 %>
