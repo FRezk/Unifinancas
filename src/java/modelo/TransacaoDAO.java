@@ -48,6 +48,10 @@ public class TransacaoDAO {
         return em.createNamedQuery("Transacao.findAllDesc").getResultList();
     }
     
+    public List<Transacao> listarByDate() throws Exception {
+        return em.createNamedQuery("Transacao.findByDate").getResultList();
+    }
+    
     public List<Transacao> gastoPorCategoria() throws Exception {
         Query query = em.createNativeQuery("Select id_categoria, count(*), sum(valor) as total From transacao Where id_tipo_transacao = 1 Group By id_categoria");
         return query.getResultList();

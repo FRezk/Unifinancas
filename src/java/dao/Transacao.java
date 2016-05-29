@@ -31,6 +31,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Transacao.findAll", query = "SELECT t FROM Transacao t"),
     @NamedQuery(name = "Transacao.findAllDesc", query = "SELECT t FROM Transacao t ORDER BY t.idTransacao DESC"),
+    @NamedQuery(name = "Transacao.findByDate", query = "SELECT t FROM Transacao t ORDER BY t.dttransacao")
 })
 
 public class Transacao implements Serializable {
