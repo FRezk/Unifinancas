@@ -57,7 +57,7 @@ public class CartaoDAO {
         em.getTransaction().begin();
         managed = em.find(managed.getClass(), idCartao);
         managed.setAtivo(0);
-        em.persist(managed);
+        em.merge(managed);
         em.getTransaction().commit();
         } catch(RuntimeException e){
             em.getTransaction().rollback();
