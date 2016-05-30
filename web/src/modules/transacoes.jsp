@@ -258,7 +258,7 @@
                                 <c:when test="${transacao.getIdUsuario().getIdUsuario() == sessionScope.idUsuario }">
                                     <tr>
                                         <td><fmt:formatDate value="${transacao.getDttransacao()}" pattern="dd/MM/yyyy"/></td>
-                                        <td><span class="label label-${transacao.getIdTipoTransacao().getNome()}"> ${transacao.getIdTipoTransacao().getNome() } </span></td>
+                                        <td><span class="label tipotransacao${transacao.getIdTipoTransacao().getIdTipoTransacao()}"> ${transacao.getIdTipoTransacao().getIdTipoTransacao() == 2? "Receita" : "Despesa" } </span></td>
                                         <td>${transacao.getDescricao()}</td>
                                         <td><i class="fa fa-tag" style="color:${transacao.getIdCategoria().getCor()}"></i> ${transacao.getIdCategoria().getNome()}</td>
                                         <td align="right">R$${transacao.getValor()}</td>
@@ -268,8 +268,8 @@
                                             </c:when>
                                             <c:when test="${transacao.getIdEspecie().getIdEspecie() == 2}">
                                                 <td>${transacao.getIdEspecie().getNome()}<img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}/${transacao.getIdCartao().getNome()}"/></td> 
-                                                </c:when>
-                                            </c:choose>
+                                            </c:when>
+                                        </c:choose>
                                     </tr>
                                 </c:when>
                             </c:choose>

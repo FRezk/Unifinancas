@@ -47,6 +47,11 @@ public class TransacaoDAO {
     public List<Transacao> listarDesc() throws Exception {
         return em.createNamedQuery("Transacao.findAllDesc").getResultList();
     }
+    public List<Transacao> listarRecentes(int maxResults) throws Exception {
+        Query query = em.createNamedQuery("Transacao.findAllDesc");
+        query.setMaxResults(maxResults);
+        return query.getResultList();
+    }
     
     public List<Transacao> gastoPorCategoria() throws Exception {
         Query query = em.createNativeQuery("Select id_categoria, count(*), sum(valor) as total From transacao Where id_tipo_transacao = 1 Group By id_categoria");

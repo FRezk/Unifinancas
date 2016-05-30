@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 <!-- Content Header (Page header) -->
@@ -23,7 +24,7 @@
 <section class="content">
     
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-7">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Resumo do Mês</h3>
@@ -79,6 +80,62 @@
             </div><!-- /.box-footer -->
           </div><!-- /.box -->
         </div><!-- /.col -->
+        
+        <div class="col-md-5">
+            <!-- PRODUCT LIST -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Transações Recentes</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body" style="min-height: 200px">
+                    <ul class="products-list product-list-in-box">
+                        <jsp:useBean id="transacaoDAO" scope="page" class="modelo.TransacaoDAO" />
+
+                        <c:forEach items="${transacaoDAO.listarRecentes(4)}" var="transacao">
+                            <c:choose>
+                                <c:when test="${transacao.getIdUsuario().getIdUsuario() == sessionScope.idUsuario }">
+
+
+                                    <li class="item">
+                                        <div class="product-img tipotransacao${transacao.getIdTipoTransacao().getIdTipoTransacao()}">
+                                            <i class="icon ${transacao.getIdTipoTransacao().getIdTipoTransacao() == 2? "ion-thumbsup" : "ion-thumbsdown" } tipoTransacao-icon"></i>
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="" class="product-title">
+                                                ${transacao.getIdCategoria().getNome()}
+                                                <i class="fa fa-tag" style="color:${transacao.getIdCategoria().getCor()}; margin-left: 8px">
+                                                </i>
+                                                <c:choose>
+                                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 1}">
+                                                        <span>${transacao.getIdEspecie().getNome()}</span>
+                                                    </c:when>
+                                                    <c:when test="${transacao.getIdEspecie().getIdEspecie() == 2}">
+                                                        <span><img src="${transacao.getIdCartao().getIdBandeira().getLogoUrl()}" class="bandeira-logo" title="${transacao.getIdCartao().getIdBandeira().getNome()}"/>${transacao.getIdCartao().getNome()}</span>
+                                                        </c:when>
+                                                    </c:choose>
+                                                <span class="label pull-right" style="background-color: #333">R$${transacao.getValor()}</span>
+                                            </a>
+                                            <span class="product-description">
+                                                ${transacao.getDescricao()}
+                                            </span>
+                                        </div>
+                                    </li> <!-- /.item -->
+                                </c:when>
+                            </c:choose>
+
+                        </c:forEach>
+
+                    </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="transacoes.jsp" class="uppercase">Ver todas as Transações</a>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div>
     </div><!-- /.row -->
     
     
@@ -223,61 +280,10 @@
         </div>
     </div>
     
+    <div class="row">
+        
+    </div>
     
-    <!-- PRODUCT LIST -->
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">Transações Recentes</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <ul class="products-list product-list-in-box">
-                <li class="item">
-                    <div class="product-img Receita">
-                        <i class="icon ion-thumbsup tipoTransacao-icon"></i>
-                    </div>
-                    <div class="product-info">
-                        <a href="javascript::;" class="product-title">Nome Categoria<span class="label label-warning pull-right">$1800</span></a>
-                        <span class="product-description">
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        </span>
-                    </div>
-                </li><!-- /.item -->
-                <li class="item">
-                    <div class="product-img Receita">
-                        <i class="icon ion-thumbsup tipoTransacao-icon"></i>
-                    </div>
-                    <div class="product-info">
-                        <a href="javascript::;" class="product-title">Nome Categoria<span class="label label-warning pull-right">$1800</span></a>
-                        <span class="product-description">
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        </span>
-                    </div>
-                </li><!-- /.item -->
-                <li class="item">
-                    <div class="product-img Despesa">
-                        <i class="icon ion-thumbsdown tipoTransacao-icon"></i>
-                    </div>
-                    <div class="product-info">
-                        <a href="javascript::;" class="product-title">Nome Categoria<span class="label label-warning pull-right">$1800</span></a>
-                        <span class="product-description">
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        </span>
-                    </div>
-                </li><!-- /.item -->
-                
-            </ul>
-        </div><!-- /.box-body -->
-        <div class="box-footer text-center">
-            <a href="javascript::;" class="uppercase">Ver todas as Transações</a>
-        </div><!-- /.box-footer -->
-    </div><!-- /.box -->
     
     
 

@@ -13,10 +13,10 @@ and open the template in the editor.
     height: 50px;
     text-align: center!important;
 }
-.product-img.Receita{
+.product-img.tipotransacao2{
     background-color: #1abc9c!important;
 }
-.product-img.Despesa{
+.product-img.tipotransacao1{
     background-color: #e74c3c!important;
     
 }
@@ -42,4 +42,9 @@ and open the template in the editor.
 .categoria-lista{
     max-height: 200px;
     overflow-y: scroll
+}
+
+.bandeira-logo{
+    width: 20px;
+    height: 15px;
 }
