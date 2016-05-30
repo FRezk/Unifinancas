@@ -253,7 +253,7 @@
 
                         <jsp:useBean id="transacaoDAO" scope="page" class="modelo.TransacaoDAO" />
                         
-                        <c:forEach items="${transacaoDAO.listarDesc()}" var="transacao">
+                        <c:forEach items="${transacaoDAO.listarByDate()}" var="transacao">
                             <c:choose>
                                 <c:when test="${transacao.getIdUsuario().getIdUsuario() == sessionScope.idUsuario }">
                                     <tr>
