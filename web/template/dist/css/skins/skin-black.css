@@ -3,6 +3,14 @@
  * -----------
  */
 /* skin-black navbar */
+#saldo-header{
+    height: 50px;
+    line-height: 50px;
+    font-family: Verdana;
+    font-size: 1em;
+    padding: 0 10px;
+    color: #374850;
+}
 body{
     background-color: #222d32;
 }

@@ -24,6 +24,7 @@ $(function(){
                 var r = JSON.parse(retorno);
                 
                 if(r.idStatus == 1){
+                    atualizarSaldo();
                     if(confirm(r.dsStatus + "\n Deseja cadastrar uma nova Receita?")){
                         limparFormulario('#receitaForm');
                     }else{
@@ -58,6 +59,7 @@ $(function(){
                 $('.loading').fadeOut('fast');
                 var r = JSON.parse(retorno);
                 if (r.idStatus == 1) {
+                    atualizarSaldo();
                     if (confirm(r.dsStatus + "\n Deseja cadastrar uma nova Despesa?")) {
                         limparFormulario('#despesaForm');
                     } else {

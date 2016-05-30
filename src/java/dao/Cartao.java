@@ -6,6 +6,7 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,6 +32,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Cartao.findActive", query = "SELECT c FROM Cartao c where c.ativo = 1 ORDER BY c.idCartao desc"),
 })
 public class Cartao implements Serializable {
+    @OneToMany(mappedBy = "idCartao")
+    private List<Transacao> transacaoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -124,6 +128,14 @@ public class Cartao implements Serializable {
     @Override
     public String toString() {
         return "dao.Cartao[ idCartao=" + idCartao + " ]";
+    }
+
+    public List<Transacao> getTransacaoList() {
+        return transacaoList;
+    }
+
+    public void setTransacaoList(List<Transacao> transacaoList) {
+        this.transacaoList = transacaoList;
     }
     
 }

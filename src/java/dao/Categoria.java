@@ -6,6 +6,7 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +30,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Categoria.findAtivo", query = "SELECT c FROM Categoria c where c.ativo = 1")
 })
 public class Categoria implements Serializable {
+    @OneToMany(mappedBy = "idCategoria")
+    private List<Transacao> transacaoList;
 
 
 
@@ -117,6 +121,14 @@ public class Categoria implements Serializable {
 
     public void setAtivo(int ativo) {
         this.ativo = ativo;
+    }
+
+    public List<Transacao> getTransacaoList() {
+        return transacaoList;
+    }
+
+    public void setTransacaoList(List<Transacao> transacaoList) {
+        this.transacaoList = transacaoList;
     }
     
 }

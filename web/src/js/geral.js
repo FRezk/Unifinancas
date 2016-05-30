@@ -1,4 +1,5 @@
 $(function(){
+    
     var rootpathname = '/Unifinancas/';
     var pathname = window.location.pathname; // Returns path only
     var file = pathname.substring(rootpathname.length, pathname.length);
@@ -21,6 +22,10 @@ $(function(){
        }
     }
     
+    atualizarSaldo();
+    
+    
+    
     
     
     //var $activeSidebarMenu = $('.sidebar-menu li a[href=\"'+file+'\"]');
@@ -28,4 +33,16 @@ $(function(){
     //console.log($activeSidebarMenu);
     
 });
+
+//saldo conta
+function atualizarSaldo() {
+    $.ajax({
+        type: 'GET',
+        url: 'src/code/getSaldo.jsp',
+        success: function (retorno) {
+            var r = JSON.parse(retorno);
+            $('#saldo-header').text("Saldo: $"+r.saldo);
+        }
+    })
+}
 

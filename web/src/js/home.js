@@ -5,7 +5,10 @@
  */
 
 $(function(){
-       
+    
+    
+
+    
     //-------------
     //- Receita por categoria CHART -
     //-------------

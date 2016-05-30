@@ -23,7 +23,7 @@
 <section class="content">
 
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="ion ion-card"></i>
@@ -33,7 +33,7 @@
                     <ul class="todo-list">
                         <form id="newcartao_form">
                             <div class="form-group">
-                                <div class="col-sm-5">
+                                <div class="col-md-5">
                                     <select name="idbandeira" class="form-control select2-cartao" >
                                         <jsp:useBean id="bandeiraDAO" scope="page" class="modelo.BandeiraDAO" />
                                         <c:set var="listaBandeira"  value="${bandeiraDAO.listar()}" scope="page"/>
@@ -43,10 +43,10 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-md-5">
                                     <input name="nomecartao" type="text" class="form-control" id="valor" placeholder="nome..." >
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <input type="submit" class="btn btn-default" value="Add" >
                                 </div>
                             </div>

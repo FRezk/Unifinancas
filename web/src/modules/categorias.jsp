@@ -23,7 +23,7 @@
 <section class="content">
     
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="ion ion-clipboard"></i>
@@ -63,7 +63,7 @@
                 </div><!-- /.box-body -->
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header">
                     <i class="fa fa-tags"></i>
