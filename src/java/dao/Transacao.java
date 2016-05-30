@@ -34,6 +34,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Transacao.findByDate", query = "SELECT t FROM Transacao t ORDER BY t.dttransacao")
 })
 
+
 public class Transacao implements Serializable {
 
     private static final long serialVersionUID = 1L;

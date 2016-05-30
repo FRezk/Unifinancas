@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Categoria.findAllDesc", query = "SELECT c FROM Categoria c ORDER BY c.idCategoria desc"),
     @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.findAtivo", query = "SELECT c FROM Categoria c where c.ativo = 1 ORDER BY c.idCategoria desc")
+    @NamedQuery(name = "Categoria.findAtivo", query = "SELECT c FROM Categoria c where c.ativo = 1")
 })
 public class Categoria implements Serializable {
 

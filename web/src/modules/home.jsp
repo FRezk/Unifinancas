@@ -60,19 +60,19 @@
               <div class="row">
                 <div class="col-sm-4 col-xs-4">
                   <div class="description-block border-right">
-                    <h5 class="description-header">$35,210.43</h5>
+                    <h5 class="description-header" id="totalreceitas">$0</h5>
                     <span class="description-text text-green">TOTAL RECEITAS</span>
                   </div><!-- /.description-block -->
                 </div><!-- /.col -->
                 <div class="col-sm-4 col-xs-4">
                   <div class="description-block border-right">
-                    <h5 class="description-header">$10,390.90</h5>
+                    <h5 class="description-header" id="totaldespesas">$0</h5>
                     <span class="description-text text-red">TOTAL DESPESAS</span>
                   </div><!-- /.description-block -->
                 </div><!-- /.col -->
                 <div class="col-sm-4 col-xs-4">
                   <div class="description-block border-right">
-                    <h5 class="description-header">$24,813.53</h5>
+                    <h5 class="description-header" id="saldo">$0</h5>
                     <span class="description-text">SALDO</span>
                   </div><!-- /.description-block -->
                 </div><!-- /.col -->
@@ -158,50 +158,23 @@
                         </div>
                         <div class="col-md-12">
                             <ul class="todo-list no-edit categoria-lista">
-                                <li>
-                                    <div class="cat-cor" style="background-color: #a66abe"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #1abc9c"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #e67e22"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #e74c3c"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
+                                <jsp:useBean id="categoriaDAO" scope="page" class="modelo.CategoriaDAO" />
+                                <c:set var="listaCategoria"  value="${categoriaDAO.listarAtivo()}" scope="page"/>
+
+                                <c:forEach items="${listaCategoria}" var="categoria">
+                                    <c:choose>
+                                        <c:when test="${categoria.getIdUsuario() == sessionScope.idUsuario || categoria.getIdUsuario() == 0}">
+                                            <li data-idcat="${categoria.getIdCategoria()}">
+                                                <div class="cat-cor" style="background-color: ${categoria.getCor()}"></div>
+                                                <span class="control-label">${categoria.getNome()}</span>
+                                                <div class="tools">
+                                                    <!--<i class="fa fa-times delcat_bt"></i>-->
+                                                </div>
+                                            </li>
+                                        </c:when>
+                                    </c:choose>
+                                </c:forEach>
+                                
                             </ul>
                         </div>
                     </div> 
@@ -227,50 +200,21 @@
                         </div>
                         <div class="col-md-12">
                             <ul class="todo-list no-edit categoria-lista">
-                                <li>
-                                    <div class="cat-cor" style="background-color: #a66abe"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #1abc9c"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #e67e22"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #e74c3c"></div>
-                                    <span class="control-label" title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
-                                <li>
-                                    <div class="cat-cor" style="background-color: #3498db"></div>
-                                    <span class="control-label"  title="Nome completo">Nome Categoria</span>
-                                </li>
+
+                                <c:forEach items="${listaCategoria}" var="categoria">
+                                    <c:choose>
+                                        <c:when test="${categoria.getIdUsuario() == sessionScope.idUsuario  || categoria.getIdUsuario() == 0}">
+                                            <li data-idcat="${categoria.getIdCategoria()}">
+                                                <div class="cat-cor" style="background-color: ${categoria.getCor()}"></div>
+                                                <span class="control-label">${categoria.getNome()}</span>
+                                                <div class="tools">
+<!--                                                    <i class="fa fa-times delcat_bt"></i>-->
+                                                </div>
+                                            </li>
+                                        </c:when>
+                                    </c:choose>
+                                </c:forEach>
+                                
                             </ul>
                         </div>
                     </div>  
@@ -289,229 +233,3 @@
 
 </section><!-- /.content -->
 
-<script>
-    
-        //-------------
-        //- Receita por categoria CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var receitaCategoriaPieChartCanvas = $("#receitaCategoriaPieChart").get(0).getContext("2d");
-        var receitaCategoriaPieChart = new Chart(receitaCategoriaPieChartCanvas);
-        var receitaCategoriaPieData = [
-          {
-            value: 700,
-            color: "#f56954",
-            highlight: "#f56954",
-            label: "Alimentação"
-          },
-          {
-            value: 500,
-            color: "#00a65a",
-            highlight: "#00a65a",
-            label: "Transporte"
-          },
-          {
-            value: 400,
-            color: "#f39c12",
-            highlight: "#f39c12",
-            label: "Outros"
-          },
-          {
-            value: 600,
-            color: "#00c0ef",
-            highlight: "#00c0ef",
-            label: "Saúde"
-          },
-          {
-            value: 300,
-            color: "#3c8dbc",
-            highlight: "#3c8dbc",
-            label: "Lazer"
-          },
-          {
-            value: 100,
-            color: "#d2d6de",
-            highlight: "#d2d6de",
-            label: "Academia"
-          }
-        ];
-        var receitaCategoriaPieOptions = {
-          //Boolean - Whether we should show a stroke on each segment
-          segmentShowStroke: true,
-          //String - The colour of each segment stroke
-          segmentStrokeColor: "#fff",
-          //Number - The width of each segment stroke
-          segmentStrokeWidth: 2,
-          //Number - The percentage of the chart that we cut out of the middle
-          percentageInnerCutout: 50, // This is 0 for Pie charts
-          //Number - Amount of animation steps
-          animationSteps: 100,
-          //String - Animation easing effect
-          animationEasing: "easeOutQuint",
-          //Boolean - Whether we animate the rotation of the Doughnut
-          animateRotate: true,
-          //Boolean - Whether we animate scaling the Doughnut from the centre
-          animateScale: true,
-          //Boolean - whether to make the chart responsive to window resizing
-          responsive: true,
-          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-          maintainAspectRatio: true,
-          //String - A legend template
-          legendTemplate: ""
-        };
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        receitaCategoriaPieChart.Doughnut(receitaCategoriaPieData, receitaCategoriaPieOptions);
-        
-        $(function(){
-        //-------------
-        //- Despesa por categoria CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var despesaCategoriaPieChartCanvas = $("#despesaCategoriaPieChart").get(0).getContext("2d");
-        var despesaCategoriaPieChart = new Chart(despesaCategoriaPieChartCanvas);
-        var despesaCategoriaPieData = [
-          {
-            value: 700,
-            color: "#f56954",
-            highlight: "#f56954",
-            label: "Alimentação"
-          },
-          {
-            value: 500,
-            color: "#00a65a",
-            highlight: "#00a65a",
-            label: "Transporte"
-          },
-          {
-            value: 400,
-            color: "#f39c12",
-            highlight: "#f39c12",
-            label: "Outros"
-          },
-          {
-            value: 600,
-            color: "#00c0ef",
-            highlight: "#00c0ef",
-            label: "Saúde"
-          },
-          {
-            value: 300,
-            color: "#3c8dbc",
-            highlight: "#3c8dbc",
-            label: "Lazer"
-          },
-          {
-            value: 100,
-            color: "#d2d6de",
-            highlight: "#d2d6de",
-            label: "Academia"
-          }
-        ];
-        var despesaCategoriaPieOptions = {
-          //Boolean - Whether we should show a stroke on each segment
-          segmentShowStroke: true,
-          //String - The colour of each segment stroke
-          segmentStrokeColor: "#fff",
-          //Number - The width of each segment stroke
-          segmentStrokeWidth: 2,
-          //Number - The percentage of the chart that we cut out of the middle
-          percentageInnerCutout: 50, // This is 0 for Pie charts
-          //Number - Amount of animation steps
-          animationSteps: 100,
-          //String - Animation easing effect
-          animationEasing: "easeOutQuint",
-          //Boolean - Whether we animate the rotation of the Doughnut
-          animateRotate: true,
-          //Boolean - Whether we animate scaling the Doughnut from the centre
-          animateScale: true,
-          //Boolean - whether to make the chart responsive to window resizing
-          responsive: true,
-          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-          maintainAspectRatio: true,
-          //String - A legend template
-          legendTemplate: ""
-        };
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        despesaCategoriaPieChart.Doughnut(despesaCategoriaPieData, despesaCategoriaPieOptions);
-        
-        
-        //-----------------------
-        //- Resumo do Mês Chart -
-        //-----------------------
-
-        // Get context with jQuery - using jQuery's .get() method.
-        var resumoChartCanvas = $("#resumoChart").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var resumoChart = new Chart(resumoChartCanvas);
-
-        var resumoChartData = {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [
-            {
-              label: "Receitas",
-              fillColor: "#11BF9D",
-              strokeColor: "#11BF9D",
-              pointColor: "#11BF9D",
-              pointStrokeColor: "#11BF9D",
-              pointHighlightFill: "#A7F2E3",
-              pointHighlightStroke: "white",
-              data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-              label: "Despesas",
-              fillColor: "#E35849",
-              strokeColor: "#E35849",
-              pointColor: "#E35849",
-              pointStrokeColor: "#E35849",
-              pointHighlightFill: "#E35849",
-              pointHighlightStroke: "white",
-              data: [28, 48, 40, 19, 86, 27, 90]
-            }
-          ]
-        };
-
-        var resumoChartOptions = {
-          //Boolean - If we should show the scale at all
-          showScale: true,
-          //Boolean - Whether grid lines are shown across the chart
-          scaleShowGridLines: false,
-          //String - Colour of the grid lines
-          scaleGridLineColor: "rgba(0,0,0,.05)",
-          //Number - Width of the grid lines
-          scaleGridLineWidth: 1,
-          //Boolean - Whether to show horizontal lines (except X axis)
-          scaleShowHorizontalLines: true,
-          //Boolean - Whether to show vertical lines (except Y axis)
-          scaleShowVerticalLines: true,
-          //Boolean - Whether the line is curved between points
-          bezierCurve: true,
-          //Number - Tension of the bezier curve between points
-          bezierCurveTension: 0.3,
-          //Boolean - Whether to show a dot for each point
-          pointDot: false,
-          //Number - Radius of each point dot in pixels
-          pointDotRadius: 4,
-          //Number - Pixel width of point dot stroke
-          pointDotStrokeWidth: 1,
-          //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-          pointHitDetectionRadius: 20,
-          //Boolean - Whether to show a stroke for datasets
-          datasetStroke: true,
-          //Number - Pixel width of dataset stroke
-          datasetStrokeWidth: 2,
-          //Boolean - Whether to fill the dataset with a color
-          datasetFill: true,
-          //String - A legend template
-          legendTemplate: "",
-          //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-          maintainAspectRatio: true,
-          //Boolean - whether to make the chart responsive to window resizing
-          responsive: true
-        };
-
-        //Create the line chart
-        resumoChart.Line(resumoChartData, resumoChartOptions);
-    });
-</script>

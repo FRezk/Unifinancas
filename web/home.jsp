@@ -51,6 +51,7 @@
     
     <%@include file="src/modules/main-scripts.jsp" %>
     <script src="template/plugins/chartjs/Chart.min.js"></script>
+    <script src="src/js/home.js"></script>
     
   </head>
   <body class="hold-transition skin-black sidebar-mini">
